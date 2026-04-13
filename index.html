@@ -188,23 +188,32 @@
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-        <a href="#about"        class="nav-link hover:text-white transition-colors">About</a>
-        <a href="#imagoworks"   class="nav-link hover:text-white transition-colors">Imagoworks</a>
-        <a href="#experience"   class="nav-link hover:text-white transition-colors">Experience</a>
-        <a href="#education"    class="nav-link hover:text-white transition-colors">Education</a>
-        <a href="#awards"       class="nav-link hover:text-white transition-colors">Awards</a>
-        <a href="#publications" class="nav-link hover:text-white transition-colors">Publications</a>
-        <a href="#contact"      class="nav-link hover:text-white transition-colors">Contact</a>
+        <a href="#about"        class="nav-link hover:text-white transition-colors" data-i18n="nav.about">연구 분야</a>
+        <a href="#imagoworks"   class="nav-link hover:text-white transition-colors" data-i18n="nav.imagoworks">이마고웍스</a>
+        <a href="#experience"   class="nav-link hover:text-white transition-colors" data-i18n="nav.experience">경력</a>
+        <a href="#education"    class="nav-link hover:text-white transition-colors" data-i18n="nav.education">학력</a>
+        <a href="#awards"       class="nav-link hover:text-white transition-colors" data-i18n="nav.awards">수상</a>
+        <a href="#publications" class="nav-link hover:text-white transition-colors" data-i18n="nav.publications">논문</a>
+        <a href="#contact"      class="nav-link hover:text-white transition-colors" data-i18n="nav.contact">연락처</a>
       </div>
 
-      <!-- CTA -->
-      <a href="mailto:kevin@imagoworks.ai"
-         class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border border-accent/40 text-accent hover:bg-accent/10 transition-all duration-200">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-        </svg>
-        Get in touch
-      </a>
+      <!-- Lang toggle + CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <div class="flex items-center bg-slate-800/80 rounded-lg p-0.5 text-xs font-mono border border-slate-700/50">
+          <button id="btn-ko" onclick="setLang('ko')"
+            class="px-3 py-1.5 rounded-md transition-all font-semibold text-white"
+            style="background:linear-gradient(135deg,#38bdf8,#818cf8);">KO</button>
+          <button id="btn-en" onclick="setLang('en')"
+            class="px-3 py-1.5 rounded-md transition-all text-slate-400 hover:text-white">EN</button>
+        </div>
+        <a href="mailto:kevin@imagoworks.ai"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border border-accent/40 text-accent hover:bg-accent/10 transition-all duration-200">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span data-i18n="nav.cta">연락하기</span>
+        </a>
+      </div>
 
       <!-- Hamburger -->
       <button id="hamburger" class="md:hidden text-slate-400 hover:text-white" aria-label="Menu">
@@ -216,13 +225,21 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden flex-col px-6 pb-4 gap-3 text-sm font-medium text-slate-300 glass border-t border-slate-800">
-      <a href="#about"        class="py-2 hover:text-accent transition-colors">About</a>
-      <a href="#imagoworks"   class="py-2 hover:text-accent transition-colors">Imagoworks</a>
-      <a href="#experience"   class="py-2 hover:text-accent transition-colors">Experience</a>
-      <a href="#education"    class="py-2 hover:text-accent transition-colors">Education</a>
-      <a href="#awards"       class="py-2 hover:text-accent transition-colors">Awards</a>
-      <a href="#publications" class="py-2 hover:text-accent transition-colors">Publications</a>
-      <a href="#contact"      class="py-2 hover:text-accent transition-colors">Contact</a>
+      <a href="#about"        class="py-2 hover:text-accent transition-colors" data-i18n="nav.about">연구 분야</a>
+      <a href="#imagoworks"   class="py-2 hover:text-accent transition-colors" data-i18n="nav.imagoworks">이마고웍스</a>
+      <a href="#experience"   class="py-2 hover:text-accent transition-colors" data-i18n="nav.experience">경력</a>
+      <a href="#education"    class="py-2 hover:text-accent transition-colors" data-i18n="nav.education">학력</a>
+      <a href="#awards"       class="py-2 hover:text-accent transition-colors" data-i18n="nav.awards">수상</a>
+      <a href="#publications" class="py-2 hover:text-accent transition-colors" data-i18n="nav.publications">논문</a>
+      <a href="#contact"      class="py-2 hover:text-accent transition-colors" data-i18n="nav.contact">연락처</a>
+      <div class="flex items-center gap-2 py-2 border-t border-slate-800 mt-1">
+        <span class="text-slate-500 text-xs">언어 / Lang:</span>
+        <button onclick="setLang('ko')" id="mob-btn-ko"
+          class="px-3 py-1 rounded text-xs font-mono font-semibold text-white"
+          style="background:linear-gradient(135deg,#38bdf8,#818cf8);">KO</button>
+        <button onclick="setLang('en')" id="mob-btn-en"
+          class="px-3 py-1 rounded text-xs font-mono text-slate-400 border border-slate-700">EN</button>
+      </div>
     </div>
   </nav>
 
@@ -236,7 +253,7 @@
           <div class="animate-fade-in-up" style="animation-delay:0.1s; opacity:0; animation-fill-mode:forwards;">
             <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border border-accent/30 text-accent bg-accent/5">
               <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-              CEO &amp; Founder · Principal Researcher · Associate Professor
+              <span data-i18n="hero.badge">CEO &amp; 창업자 · 책임연구원 · 부교수</span>
             </span>
           </div>
 
@@ -248,36 +265,31 @@
             <div class="section-line w-32 mt-4 animate-fade-in-up" style="animation-delay:0.35s; opacity:0; animation-fill-mode:forwards;"></div>
           </div>
 
-          <p class="text-slate-400 text-lg leading-relaxed max-w-lg animate-fade-in-up" style="animation-delay:0.4s; opacity:0; animation-fill-mode:forwards;">
-            Pioneering the intersection of <span class="text-accent font-medium">Artificial Intelligence</span> and
-            <span class="text-accent2 font-medium">Medical Imaging</span>. Building intelligent software that transforms surgical planning, diagnostics, and patient outcomes.
-          </p>
+          <p class="text-slate-400 text-lg leading-relaxed max-w-lg animate-fade-in-up" style="animation-delay:0.4s; opacity:0; animation-fill-mode:forwards;"
+             data-i18n="hero.desc"><span class="text-accent font-medium">인공지능</span>과 <span class="text-accent2 font-medium">의료영상</span>의 교차점을 개척합니다. 수술 계획, 진단, 환자 치료 결과를 혁신하는 지능형 소프트웨어를 구축합니다.</p>
 
           <!-- Tags -->
           <div class="flex flex-wrap gap-2 animate-fade-in-up" style="animation-delay:0.5s; opacity:0; animation-fill-mode:forwards;">
-            <span class="tag">Medical AI</span>
-            <span class="tag">3D Image Registration</span>
-            <span class="tag">Deep Learning</span>
-            <span class="tag">Surgical Planning</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">VR/AR in Surgery</span>
+            <span class="tag" data-i18n="hero.tag1">의료 AI</span>
+            <span class="tag" data-i18n="hero.tag2">3D 영상 정합</span>
+            <span class="tag" data-i18n="hero.tag3">딥러닝</span>
+            <span class="tag" data-i18n="hero.tag4">수술 계획</span>
+            <span class="tag" data-i18n="hero.tag5">컴퓨터 비전</span>
+            <span class="tag" data-i18n="hero.tag6">VR/AR 수술</span>
           </div>
 
           <!-- CTA Buttons -->
           <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay:0.6s; opacity:0; animation-fill-mode:forwards;">
             <a href="#imagoworks"
                class="px-6 py-3 rounded-xl font-semibold text-sm text-white"
-               style="background: linear-gradient(135deg, #38bdf8, #818cf8);">
-              Imagoworks 소개
-            </a>
+               style="background: linear-gradient(135deg, #38bdf8, #818cf8);"
+               data-i18n="hero.btn1">이마고웍스 소개</a>
             <a href="#publications"
-               class="px-6 py-3 rounded-xl font-semibold text-sm border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all">
-              Publications
-            </a>
+               class="px-6 py-3 rounded-xl font-semibold text-sm border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all"
+               data-i18n="hero.btn2">논문 보기</a>
             <a href="#contact"
-               class="px-6 py-3 rounded-xl font-semibold text-sm border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all">
-              Contact
-            </a>
+               class="px-6 py-3 rounded-xl font-semibold text-sm border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all"
+               data-i18n="hero.btn3">연락하기</a>
           </div>
         </div>
 
@@ -311,26 +323,26 @@
               <div class="grid grid-cols-3 gap-3">
                 <div class="stat-box rounded-xl p-3 text-center">
                   <p class="text-2xl font-extrabold gradient-text">54</p>
-                  <p class="text-xs text-muted mt-1">Journal<br/>Articles</p>
+                  <p class="text-xs text-muted mt-1" data-i18n="stat.journal">저널<br/>논문</p>
                 </div>
                 <div class="stat-box rounded-xl p-3 text-center">
                   <p class="text-2xl font-extrabold gradient-text">44</p>
-                  <p class="text-xs text-muted mt-1">Conf.<br/>Papers</p>
+                  <p class="text-xs text-muted mt-1" data-i18n="stat.conf">학회<br/>논문</p>
                 </div>
                 <div class="stat-box rounded-xl p-3 text-center">
                   <p class="text-2xl font-extrabold gradient-text">22</p>
-                  <p class="text-xs text-muted mt-1">Awards<br/>Won</p>
+                  <p class="text-xs text-muted mt-1" data-i18n="stat.awards">수상<br/>실적</p>
                 </div>
               </div>
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="stat-box rounded-xl p-3 text-center">
                   <p class="text-xl font-extrabold gradient-text">25+</p>
-                  <p class="text-xs text-muted mt-1">Years Research</p>
+                  <p class="text-xs text-muted mt-1" data-i18n="stat.years">연구 경력</p>
                 </div>
                 <div class="stat-box rounded-xl p-3 text-center">
                   <p class="text-xl font-extrabold gradient-text">5</p>
-                  <p class="text-xs text-muted mt-1">Prof. Society</p>
+                  <p class="text-xs text-muted mt-1" data-i18n="stat.society">전문학회</p>
                 </div>
               </div>
 
@@ -338,19 +350,19 @@
               <div class="space-y-2">
                 <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
                   <div class="w-2 h-2 rounded-full bg-green-400"></div>
-                  <span class="text-xs text-slate-300">Imagoworks — CEO &amp; Founder</span>
+                  <span class="text-xs text-slate-300" data-i18n="aff.imagoworks">Imagoworks — CEO &amp; 창업자</span>
                 </div>
                 <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
                   <div class="w-2 h-2 rounded-full bg-blue-400"></div>
-                  <span class="text-xs text-slate-300">KIST — Principal Researcher</span>
+                  <span class="text-xs text-slate-300" data-i18n="aff.kist">KIST — 책임연구원</span>
                 </div>
                 <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
                   <div class="w-2 h-2 rounded-full bg-purple-400"></div>
-                  <span class="text-xs text-slate-300">UST — Associate Professor</span>
+                  <span class="text-xs text-slate-300" data-i18n="aff.ust">UST — 부교수</span>
                 </div>
                 <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
                   <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
-                  <span class="text-xs text-slate-300">Stanford — Postdoc (2013-14)</span>
+                  <span class="text-xs text-slate-300" data-i18n="aff.stanford">Stanford — 박사후연구원 (2013-14)</span>
                 </div>
               </div>
             </div>
@@ -373,8 +385,8 @@
   <section id="about" class="py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="reveal mb-16">
-        <p class="text-accent font-mono text-sm mb-2">01 — About</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Research Focus</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="about.label">01 — 연구 분야</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="about.title">연구 주제</h2>
         <div class="section-line w-24"></div>
       </div>
 
@@ -387,12 +399,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-white">Medical AI &amp; Deep Learning</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Developing deep learning models for automated segmentation, classification, and diagnosis of medical images including CT, MRI, and X-ray data.
-          </p>
+          <h3 class="text-lg font-semibold text-white" data-i18n="card.ai.title">의료 AI &amp; 딥러닝</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card.ai.desc">CT, MRI, X-ray 등 의료영상에 대한 자동 분할·분류·진단 딥러닝 모델 개발.</p>
           <div class="flex flex-wrap gap-1">
-            <span class="tag">CNN</span><span class="tag">Segmentation</span><span class="tag">Diagnosis</span>
+            <span class="tag">CNN</span><span class="tag" data-i18n="tag.seg">분할</span><span class="tag" data-i18n="tag.diag">진단</span>
           </div>
         </div>
 
@@ -404,12 +414,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-white">3D Surgical Planning</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Creating virtual surgical planning software for maxillofacial reconstruction, orthopedic surgery, and dental procedures using 3D modeling and simulation.
-          </p>
+          <h3 class="text-lg font-semibold text-white" data-i18n="card.surgical.title">3D 수술 계획</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card.surgical.desc">3D 모델링과 시뮬레이션을 활용한 악안면 재건·정형외과·치과 수술 계획 가상 소프트웨어 개발.</p>
           <div class="flex flex-wrap gap-1">
-            <span class="tag">3D Modeling</span><span class="tag">VR Surgery</span><span class="tag">CAD</span>
+            <span class="tag" data-i18n="tag.3d">3D 모델링</span><span class="tag" data-i18n="tag.vrsurg">VR 수술</span><span class="tag">CAD</span>
           </div>
         </div>
 
@@ -421,12 +429,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-white">Image Registration</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Research on 2D-3D and deformable surface registration for surgical navigation, patient positioning in radiotherapy, and postoperative analysis.
-          </p>
+          <h3 class="text-lg font-semibold text-white" data-i18n="card.reg.title">영상 정합</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card.reg.desc">수술 내비게이션, 방사선치료 환자 자세 설정, 수술 후 분석을 위한 2D-3D 및 변형 표면 정합 연구.</p>
           <div class="flex flex-wrap gap-1">
-            <span class="tag">2D-3D Reg.</span><span class="tag">Radiotherapy</span><span class="tag">Navigation</span>
+            <span class="tag">2D-3D Reg.</span><span class="tag" data-i18n="tag.rt">방사선치료</span><span class="tag" data-i18n="tag.nav">내비게이션</span>
           </div>
         </div>
 
@@ -456,12 +462,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-white">VR/AR in Surgery</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Applying virtual and augmented reality technologies for surgical simulation, pre-operative training, and intraoperative guidance systems.
-          </p>
+          <h3 class="text-lg font-semibold text-white" data-i18n="card.vr.title">VR/AR 수술</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card.vr.desc">가상·증강현실 기술을 수술 시뮬레이션, 수술 전 훈련, 수술 중 안내 시스템에 적용.</p>
           <div class="flex flex-wrap gap-1">
-            <span class="tag">VR</span><span class="tag">AR</span><span class="tag">Simulation</span>
+            <span class="tag">VR</span><span class="tag">AR</span><span class="tag" data-i18n="tag.sim">시뮬레이션</span>
           </div>
         </div>
 
@@ -474,12 +478,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-white">Surgical Robotics</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Optimization of surgical robotic systems, end-effector path planning, collision avoidance, and markerless navigation for minimally invasive procedures.
-          </p>
+          <h3 class="text-lg font-semibold text-white" data-i18n="card.robot.title">수술 로봇</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card.robot.desc">수술 로봇 시스템 최적화, 엔드이펙터 경로 계획, 충돌 회피, 최소침습 수술을 위한 마커리스 내비게이션.</p>
           <div class="flex flex-wrap gap-1">
-            <span class="tag">Robotics</span><span class="tag">Navigation</span><span class="tag">Planning</span>
+            <span class="tag" data-i18n="tag.robo">로봇</span><span class="tag" data-i18n="tag.nav2">내비게이션</span><span class="tag" data-i18n="tag.plan">계획</span>
           </div>
         </div>
       </div>
@@ -491,10 +493,10 @@
     <div class="max-w-6xl mx-auto px-6">
 
       <div class="reveal mb-16">
-        <p class="text-accent font-mono text-sm mb-2">02 — Startup</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Imagoworks, Inc.</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="imago.label">02 — 이마고웍스</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="imago.title">Imagoworks, Inc.</h2>
         <div class="section-line w-24"></div>
-        <p class="text-slate-400 mt-4 max-w-2xl">
+        <p class="text-slate-400 mt-4 max-w-2xl" data-i18n="imago.desc">
           AI 기반 디지털 덴티스트리 전문 기업 — KIST 공식 스핀오프로 2019년 창업, 전 세계 110개국 치과 워크플로우를 혁신 중입니다.
         </p>
       </div>
@@ -791,8 +793,8 @@
   <section id="experience" class="py-24">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal mb-16">
-        <p class="text-accent font-mono text-sm mb-2">03 — Experience</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Professional Journey</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="exp.label">03 — 경력</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="exp.title">경력 사항</h2>
         <div class="section-line w-24"></div>
       </div>
 
@@ -808,19 +810,17 @@
             <div class="glass rounded-2xl p-6">
               <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
                 <div>
-                  <h3 class="text-xl font-bold text-white">Chief Executive Officer &amp; Founder</h3>
-                  <p class="text-accent font-medium mt-0.5">Imagoworks, Inc.</p>
+                  <h3 class="text-xl font-bold text-white" data-i18n="exp1.title">CEO &amp; 창업자</h3>
+                  <p class="text-accent font-medium mt-0.5" data-i18n="exp1.company">Imagoworks, Inc.</p>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap">Nov. 2019 — Present</span>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap" data-i18n="exp1.period">2019.11 — 현재</span>
               </div>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Founded and leading an AI medical software company specializing in dental AI solutions. Recognized by Johnson &amp; Johnson's Seoul Innovation QuickFire Challenge (Smart Healthcare winner, 2019) and multiple government commendations for contributions to AI industry development.
-              </p>
+              <p class="text-slate-400 text-sm leading-relaxed" data-i18n="exp1.desc">AI 의료 소프트웨어 전문 기업 창업 및 경영. 2019년 Johnson &amp; Johnson 서울 이노베이션 퀵파이어챌린지(스마트 헬스케어) 우승. 다수의 정부 표창 수훈.</p>
               <div class="flex flex-wrap gap-2 mt-4">
-                <span class="tag">Startup Leadership</span>
-                <span class="tag">Dental AI</span>
-                <span class="tag">Product Strategy</span>
-                <span class="tag">Fundraising</span>
+                <span class="tag" data-i18n="etag1.1">스타트업 경영</span>
+                <span class="tag" data-i18n="etag1.2">치과 AI</span>
+                <span class="tag" data-i18n="etag1.3">제품 전략</span>
+                <span class="tag" data-i18n="etag1.4">투자유치</span>
               </div>
             </div>
           </div>
@@ -831,18 +831,16 @@
             <div class="glass rounded-2xl p-6">
               <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
                 <div>
-                  <h3 class="text-xl font-bold text-white">Principal Researcher</h3>
-                  <p class="text-accent font-medium mt-0.5">Korea Institute of Science and Technology (KIST) — Center for Bionics</p>
+                  <h3 class="text-xl font-bold text-white" data-i18n="exp2.title">책임연구원</h3>
+                  <p class="text-accent font-medium mt-0.5" data-i18n="exp2.company">한국과학기술연구원 (KIST) — 바이오닉스연구센터</p>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap">Mar. 2018 — Present</span>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap" data-i18n="exp2.period">2018.03 — 현재</span>
               </div>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Leading research in medical AI and computer-assisted surgical systems. Previously served as Senior Researcher (2011–2018) and Star Postdoctoral Researcher (2009–2011) at KIST, building a strong foundation in bionics and medical IT.
-              </p>
+              <p class="text-slate-400 text-sm leading-relaxed" data-i18n="exp2.desc">의료 AI 및 컴퓨터 지원 수술 시스템 연구 선도. 이전에는 선임연구원(2011–2018) 및 스타박사후연구원(2009–2011)으로 재직.</p>
               <div class="flex flex-wrap gap-2 mt-4">
-                <span class="tag">Medical Imaging</span>
-                <span class="tag">AI Research</span>
-                <span class="tag">Team Leadership</span>
+                <span class="tag" data-i18n="etag2.1">의료영상</span>
+                <span class="tag" data-i18n="etag2.2">AI 연구</span>
+                <span class="tag" data-i18n="etag2.3">팀 리더십</span>
               </div>
             </div>
           </div>
@@ -853,18 +851,16 @@
             <div class="glass rounded-2xl p-6">
               <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
                 <div>
-                  <h3 class="text-xl font-bold text-white">Associate Professor</h3>
-                  <p class="text-accent font-medium mt-0.5">University of Science and Technology (UST), KIST School — Division of Bio-Medical Science &amp; Technology</p>
+                  <h3 class="text-xl font-bold text-white" data-i18n="exp3.title">부교수</h3>
+                  <p class="text-accent font-medium mt-0.5" data-i18n="exp3.company">과학기술연합대학원대학교 (UST) — KIST 스쿨 바이오메디컬과학기술학부</p>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap">Mar. 2012 — Present</span>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap" data-i18n="exp3.period">2012.03 — 현재</span>
               </div>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Teaching and mentoring graduate students in biomedical science and technology, bridging the gap between engineering research and medical application.
-              </p>
+              <p class="text-slate-400 text-sm leading-relaxed" data-i18n="exp3.desc">생명의학과학기술 분야 대학원생 교육 및 연구 지도.</p>
               <div class="flex flex-wrap gap-2 mt-4">
-                <span class="tag">Graduate Teaching</span>
-                <span class="tag">Research Supervision</span>
-                <span class="tag">Bio-Medical Engineering</span>
+                <span class="tag" data-i18n="etag3.1">대학원 강의</span>
+                <span class="tag" data-i18n="etag3.2">연구 지도</span>
+                <span class="tag" data-i18n="etag3.3">의공학</span>
               </div>
             </div>
           </div>
@@ -875,18 +871,16 @@
             <div class="glass rounded-2xl p-6">
               <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
                 <div>
-                  <h3 class="text-xl font-bold text-white">Postdoctoral Scholar</h3>
-                  <p class="text-accent font-medium mt-0.5">Stanford University — Department of Radiation Oncology</p>
+                  <h3 class="text-xl font-bold text-white" data-i18n="exp4.title">박사후연구원</h3>
+                  <p class="text-accent font-medium mt-0.5" data-i18n="exp4.company">Stanford University — 방사선종양학과</p>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-mono border border-slate-500/30 text-slate-400 bg-slate-500/5 whitespace-nowrap">May 2013 — Apr. 2014</span>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-slate-500/30 text-slate-400 bg-slate-500/5 whitespace-nowrap" data-i18n="exp4.period">2013.05 — 2014.04</span>
               </div>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Conducted postdoctoral research under Prof. Lei Xing on deformable surface registration for patient setup in radiotherapy, developing methods for head-and-neck cancer treatment precision.
-              </p>
+              <p class="text-slate-400 text-sm leading-relaxed" data-i18n="exp4.desc">Lei Xing 교수 지도 하에 방사선치료 환자 세팅을 위한 변형 표면 정합 연구. 두경부암 치료 정밀도 향상.</p>
               <div class="flex flex-wrap gap-2 mt-4">
-                <span class="tag">Radiotherapy</span>
-                <span class="tag">Surface Registration</span>
-                <span class="tag">Patient Positioning</span>
+                <span class="tag" data-i18n="etag4.1">방사선치료</span>
+                <span class="tag" data-i18n="etag4.2">표면 정합</span>
+                <span class="tag" data-i18n="etag4.3">환자 자세 설정</span>
               </div>
             </div>
           </div>
@@ -897,14 +891,12 @@
             <div class="glass rounded-2xl p-6">
               <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
                 <div>
-                  <h3 class="text-xl font-bold text-white">Chief Researcher</h3>
-                  <p class="text-accent font-medium mt-0.5">K&amp;I Technology Co., Ltd — K&amp;I Research Center</p>
+                  <h3 class="text-xl font-bold text-white" data-i18n="exp5.title">수석연구원</h3>
+                  <p class="text-accent font-medium mt-0.5" data-i18n="exp5.company">K&amp;I Technology Co., Ltd — K&amp;I 연구센터</p>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs font-mono border border-slate-500/30 text-slate-400 bg-slate-500/5 whitespace-nowrap">Mar. 2003 — Aug. 2009</span>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-slate-500/30 text-slate-400 bg-slate-500/5 whitespace-nowrap" data-i18n="exp5.period">2003.03 — 2009.08</span>
               </div>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Led research and development in medical visualization software using C++, MFC, OpenGL, OpenCV, VTK, ITK, and CUDA, laying the technical groundwork for later medical imaging research.
-              </p>
+              <p class="text-slate-400 text-sm leading-relaxed" data-i18n="exp5.desc">C++, MFC, OpenGL, OpenCV, VTK, ITK, CUDA를 활용한 의료 시각화 소프트웨어 연구개발.</p>
               <div class="flex flex-wrap gap-2 mt-4">
                 <span class="tag">C++</span><span class="tag">OpenGL</span><span class="tag">VTK</span><span class="tag">ITK</span><span class="tag">CUDA</span>
               </div>
@@ -920,8 +912,8 @@
   <section id="education" class="py-24 bg-surface/30">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal mb-16">
-        <p class="text-accent font-mono text-sm mb-2">04 — Education</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Academic Background</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="edu.label">04 — 학력</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="edu.title">학력 사항</h2>
         <div class="section-line w-24"></div>
       </div>
 
@@ -933,13 +925,10 @@
                   style="background:linear-gradient(135deg,#38bdf8,#818cf8);">PD</span>
             <span class="text-xs font-mono text-accent">2013 — 2014</span>
           </div>
-          <h3 class="text-lg font-bold text-white">Postdoctoral Scholar</h3>
-          <p class="text-accent2 font-medium text-sm">Stanford University, USA</p>
-          <p class="text-slate-400 text-sm">Radiation Oncology</p>
-          <p class="text-slate-500 text-xs leading-relaxed border-l-2 border-slate-700 pl-3">
-            Deformable surface registration for patient setup in radiotherapy<br/>
-            <span class="text-slate-600">Advisor: Prof. Lei Xing</span>
-          </p>
+          <h3 class="text-lg font-bold text-white" data-i18n="edu1.degree">박사후연구원</h3>
+          <p class="text-accent2 font-medium text-sm" data-i18n="edu1.school">Stanford University, 미국</p>
+          <p class="text-slate-400 text-sm" data-i18n="edu1.dept">방사선종양학과</p>
+          <p class="text-slate-500 text-xs leading-relaxed border-l-2 border-slate-700 pl-3" data-i18n="edu1.thesis">방사선치료 환자 세팅을 위한 변형 표면 정합<br/><span class="text-slate-600">지도: Lei Xing 교수</span></p>
         </div>
 
         <!-- PhD -->
@@ -949,13 +938,10 @@
                   style="background:linear-gradient(135deg,#818cf8,#c084fc);">PhD</span>
             <span class="text-xs font-mono text-accent">2005 — 2009</span>
           </div>
-          <h3 class="text-lg font-bold text-white">Doctor of Philosophy</h3>
-          <p class="text-accent2 font-medium text-sm">Seoul National University, Korea</p>
-          <p class="text-slate-400 text-sm">Mechanical &amp; Aerospace Engineering</p>
-          <p class="text-slate-500 text-xs leading-relaxed border-l-2 border-slate-700 pl-3">
-            3D postoperative analysis of total knee arthroplasty using 2D-3D medical image registration<br/>
-            <span class="text-slate-600">Advisor: Prof. Kunwoo Lee</span>
-          </p>
+          <h3 class="text-lg font-bold text-white" data-i18n="edu2.degree">공학박사</h3>
+          <p class="text-accent2 font-medium text-sm" data-i18n="edu2.school">서울대학교</p>
+          <p class="text-slate-400 text-sm" data-i18n="edu2.dept">기계항공공학부</p>
+          <p class="text-slate-500 text-xs leading-relaxed border-l-2 border-slate-700 pl-3" data-i18n="edu2.thesis">2D-3D 의료영상 정합을 이용한 인공관절 수술 후 3D 분석<br/><span class="text-slate-600">지도: 이건우 교수</span></p>
         </div>
 
         <!-- MS -->
@@ -965,9 +951,9 @@
                   style="background:linear-gradient(135deg,#c084fc,#f472b6);">MS</span>
             <span class="text-xs font-mono text-accent">2001 — 2003</span>
           </div>
-          <h3 class="text-lg font-bold text-white">Master of Science</h3>
-          <p class="text-accent2 font-medium text-sm">Seoul National University, Korea</p>
-          <p class="text-slate-400 text-sm">Mechanical &amp; Aerospace Engineering</p>
+          <h3 class="text-lg font-bold text-white" data-i18n="edu3.degree">공학석사</h3>
+          <p class="text-accent2 font-medium text-sm" data-i18n="edu3.school">서울대학교</p>
+          <p class="text-slate-400 text-sm" data-i18n="edu3.dept">기계항공공학부</p>
         </div>
 
         <!-- BS -->
@@ -977,10 +963,10 @@
                   style="background:linear-gradient(135deg,#f472b6,#fb923c);">BS</span>
             <span class="text-xs font-mono text-accent">1997 — 2001</span>
           </div>
-          <h3 class="text-lg font-bold text-white">Bachelor of Science</h3>
-          <p class="text-accent2 font-medium text-sm">Seoul National University, Korea</p>
-          <p class="text-slate-400 text-sm">Mechanical &amp; Aerospace Engineering</p>
-          <p class="text-slate-500 text-xs border-l-2 border-slate-700 pl-3">Academic Scholarship (1998–2000)</p>
+          <h3 class="text-lg font-bold text-white" data-i18n="edu4.degree">공학학사</h3>
+          <p class="text-accent2 font-medium text-sm" data-i18n="edu4.school">서울대학교</p>
+          <p class="text-slate-400 text-sm" data-i18n="edu4.dept">기계항공공학부</p>
+          <p class="text-slate-500 text-xs border-l-2 border-slate-700 pl-3" data-i18n="edu4.note">학업우수장학금 수혜 (1998–2000)</p>
         </div>
       </div>
     </div>
@@ -990,8 +976,8 @@
   <section id="awards" class="py-24">
     <div class="max-w-5xl mx-auto px-6">
       <div class="reveal mb-16">
-        <p class="text-accent font-mono text-sm mb-2">05 — Recognition</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Awards &amp; Honors</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="awards.label">05 — 수상</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="awards.title">수상 내역</h2>
         <div class="section-line w-24"></div>
       </div>
 
@@ -999,32 +985,32 @@
       <div class="grid md:grid-cols-3 gap-6 mb-12">
         <div class="reveal award-badge rounded-2xl p-6 text-center space-y-3">
           <div class="text-4xl award-star">★</div>
-          <h3 class="font-bold text-white">Presidential Commendation</h3>
-          <p class="text-sm text-slate-400">Republic of Korea</p>
-          <span class="text-xs font-mono text-yellow-500">December 2023</span>
+          <h3 class="font-bold text-white" data-i18n="hl1.title">대통령 표창</h3>
+          <p class="text-sm text-slate-400" data-i18n="hl1.org">대한민국</p>
+          <span class="text-xs font-mono text-yellow-500" data-i18n="hl1.date">2023년 12월</span>
         </div>
         <div class="reveal award-badge rounded-2xl p-6 text-center space-y-3" style="transition-delay:0.1s">
           <div class="text-4xl award-star">★</div>
-          <h3 class="font-bold text-white">J&amp;J QuickFire Winner</h3>
-          <p class="text-sm text-slate-400">Seoul Innovation · Smart Healthcare<br/>Prize: ~US $75K + Seoul Biohub Residency</p>
-          <span class="text-xs font-mono text-yellow-500">November 2019</span>
+          <h3 class="font-bold text-white" data-i18n="hl2.title">J&amp;J 퀵파이어 챌린지 우승</h3>
+          <p class="text-sm text-slate-400" data-i18n="hl2.org">서울 이노베이션 · 스마트 헬스케어<br/>상금: ~US $75K + 서울바이오허브 1년 입주</p>
+          <span class="text-xs font-mono text-yellow-500" data-i18n="hl2.date">2019년 11월</span>
         </div>
         <div class="reveal award-badge rounded-2xl p-6 text-center space-y-3" style="transition-delay:0.2s">
           <div class="text-4xl award-star">★</div>
-          <h3 class="font-bold text-white">Minister's Commendation</h3>
-          <p class="text-sm text-slate-400">Ministry of Science &amp; ICT<br/>"Contribution to AI Industry"</p>
-          <span class="text-xs font-mono text-yellow-500">December 2022</span>
+          <h3 class="font-bold text-white" data-i18n="hl3.title">장관 표창</h3>
+          <p class="text-sm text-slate-400" data-i18n="hl3.org">과학기술정보통신부<br/>"AI 산업 발전 기여"</p>
+          <span class="text-xs font-mono text-yellow-500" data-i18n="hl3.date">2022년 12월</span>
         </div>
       </div>
 
       <!-- All awards list -->
       <div class="reveal glass rounded-2xl p-6">
-        <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-6">Complete Awards List</h3>
+        <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-6" data-i18n="awards.all.title">전체 수상 목록</h3>
         <div class="space-y-3" id="awards-list">
           <!-- Populated by JS -->
         </div>
         <button id="toggle-awards" class="mt-6 text-sm text-accent hover:text-accent2 transition-colors font-medium flex items-center gap-1">
-          <span id="toggle-awards-text">Show all awards</span>
+          <span id="toggle-awards-text" data-i18n="awards.show_more">전체 수상 내역 보기</span>
           <svg id="toggle-awards-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
@@ -1037,8 +1023,8 @@
   <section id="publications" class="py-24 bg-surface/30">
     <div class="max-w-5xl mx-auto px-6">
       <div class="reveal mb-16">
-        <p class="text-accent font-mono text-sm mb-2">06 — Publications</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Selected Publications</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="pub.label">06 — 논문</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="pub.title">주요 논문</h2>
         <div class="section-line w-24"></div>
       </div>
 
@@ -1046,33 +1032,27 @@
       <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
         <div class="stat-box rounded-xl p-4 text-center">
           <p class="text-3xl font-extrabold gradient-text">54</p>
-          <p class="text-sm text-muted mt-1">Journal Articles</p>
+          <p class="text-sm text-muted mt-1" data-i18n="pub.stat1">저널 논문</p>
         </div>
         <div class="stat-box rounded-xl p-4 text-center">
           <p class="text-3xl font-extrabold gradient-text">44</p>
-          <p class="text-sm text-muted mt-1">Conference Papers</p>
+          <p class="text-sm text-muted mt-1" data-i18n="pub.stat2">학회 논문</p>
         </div>
         <div class="stat-box rounded-xl p-4 text-center">
           <p class="text-3xl font-extrabold gradient-text">1</p>
-          <p class="text-sm text-muted mt-1">Book</p>
+          <p class="text-sm text-muted mt-1" data-i18n="pub.stat3">저서</p>
         </div>
         <div class="stat-box rounded-xl p-4 text-center">
           <p class="text-3xl font-extrabold gradient-text">2</p>
-          <p class="text-sm text-muted mt-1">White Papers</p>
+          <p class="text-sm text-muted mt-1" data-i18n="pub.stat4">백서</p>
         </div>
       </div>
 
       <!-- Tab buttons -->
       <div class="reveal flex flex-wrap gap-2 mb-8">
-        <button data-tab="journal" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all active-tab">
-          Journal Articles
-        </button>
-        <button data-tab="conference" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all">
-          Conference Papers
-        </button>
-        <button data-tab="book" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all">
-          Books &amp; White Papers
-        </button>
+        <button data-tab="journal" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all active-tab" data-i18n="tab.journal">저널 논문</button>
+        <button data-tab="conference" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all" data-i18n="tab.conference">학회 논문</button>
+        <button data-tab="book" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all" data-i18n="tab.book">저서 &amp; 백서</button>
       </div>
 
       <!-- Tab Content -->
@@ -1087,9 +1067,7 @@
       </div>
 
       <div class="mt-8 text-center">
-        <button id="load-more-pub" class="px-6 py-3 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all">
-          Load more publications
-        </button>
+        <button id="load-more-pub" class="px-6 py-3 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all" data-i18n="pub.load_more">더 보기</button>
       </div>
     </div>
   </section>
@@ -1098,8 +1076,8 @@
   <section class="py-20">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal mb-12">
-        <p class="text-accent font-mono text-sm mb-2">07 — Community</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Professional Memberships</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="mem.label">07 — 학회</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="mem.title">전문학회 활동</h2>
         <div class="section-line w-24"></div>
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
@@ -1110,9 +1088,9 @@
             </svg>
           </div>
           <div>
-            <p class="font-medium text-white text-sm">AI Working Group</p>
-            <p class="text-xs text-slate-400">FDI World Dental Federation</p>
-            <p class="text-xs text-accent font-mono">2021 — 2023</p>
+            <p class="font-medium text-white text-sm" data-i18n="mem1.role">AI 워킹그룹</p>
+            <p class="text-xs text-slate-400" data-i18n="mem1.org">FDI 세계치과연맹</p>
+            <p class="text-xs text-accent font-mono" data-i18n="mem1.period">2021 — 2023</p>
           </div>
         </div>
         <div class="reveal glass rounded-xl p-5 flex items-center gap-4" style="transition-delay:0.05s">
@@ -1122,9 +1100,9 @@
             </svg>
           </div>
           <div>
-            <p class="font-medium text-white text-sm">Committee Member</p>
-            <p class="text-xs text-slate-400">Korean Society for Artificial Intelligence in Medicine</p>
-            <p class="text-xs text-accent font-mono">2018 — Present</p>
+            <p class="font-medium text-white text-sm" data-i18n="mem2.role">위원</p>
+            <p class="text-xs text-slate-400" data-i18n="mem2.org">대한의료인공지능학회</p>
+            <p class="text-xs text-accent font-mono" data-i18n="mem2.period">2018 — 현재</p>
           </div>
         </div>
         <div class="reveal glass rounded-xl p-5 flex items-center gap-4" style="transition-delay:0.1s">
@@ -1134,9 +1112,9 @@
             </svg>
           </div>
           <div>
-            <p class="font-medium text-white text-sm">Committee Member</p>
-            <p class="text-xs text-slate-400">Korean Society of Imaging Informatics in Medicine</p>
-            <p class="text-xs text-accent font-mono">2016 — Present</p>
+            <p class="font-medium text-white text-sm" data-i18n="mem3.role">위원</p>
+            <p class="text-xs text-slate-400" data-i18n="mem3.org">대한의료영상정보학회</p>
+            <p class="text-xs text-accent font-mono" data-i18n="mem3.period">2016 — 현재</p>
           </div>
         </div>
         <div class="reveal glass rounded-xl p-5 flex items-center gap-4" style="transition-delay:0.15s">
@@ -1146,9 +1124,9 @@
             </svg>
           </div>
           <div>
-            <p class="font-medium text-white text-sm">Committee Member</p>
-            <p class="text-xs text-slate-400">Society for Computer Design and Engineering</p>
-            <p class="text-xs text-accent font-mono">2016 — Present</p>
+            <p class="font-medium text-white text-sm" data-i18n="mem4.role">위원</p>
+            <p class="text-xs text-slate-400" data-i18n="mem4.org">한국CDE학회</p>
+            <p class="text-xs text-accent font-mono" data-i18n="mem4.period">2016 — 현재</p>
           </div>
         </div>
         <div class="reveal glass rounded-xl p-5 flex items-center gap-4 sm:col-span-2" style="transition-delay:0.2s">
@@ -1158,9 +1136,9 @@
             </svg>
           </div>
           <div>
-            <p class="font-medium text-white text-sm">Committee Member</p>
-            <p class="text-xs text-slate-400">Korean Society for Simulation Surgery</p>
-            <p class="text-xs text-accent font-mono">2015 — Present</p>
+            <p class="font-medium text-white text-sm" data-i18n="mem5.role">위원</p>
+            <p class="text-xs text-slate-400" data-i18n="mem5.org">대한시뮬레이션수술학회</p>
+            <p class="text-xs text-accent font-mono" data-i18n="mem5.period">2015 — 현재</p>
           </div>
         </div>
       </div>
@@ -1171,12 +1149,10 @@
   <section id="contact" class="py-24 bg-surface/30">
     <div class="max-w-3xl mx-auto px-6 text-center">
       <div class="reveal mb-12">
-        <p class="text-accent font-mono text-sm mb-2">08 — Contact</p>
-        <h2 class="text-3xl font-bold text-white mb-3">Get In Touch</h2>
+        <p class="text-accent font-mono text-sm mb-2" data-i18n="contact.label">08 — 연락처</p>
+        <h2 class="text-3xl font-bold text-white mb-3" data-i18n="contact.title">연락하기</h2>
         <div class="section-line w-24 mx-auto"></div>
-        <p class="text-slate-400 mt-6 max-w-md mx-auto">
-          Interested in collaboration, research, or Imagoworks? Feel free to reach out.
-        </p>
+        <p class="text-slate-400 mt-6 max-w-md mx-auto" data-i18n="contact.desc">공동연구, 이마고웍스 협력, 또는 강연 요청 등 편하게 연락 주세요.</p>
       </div>
 
       <div class="reveal grid sm:grid-cols-3 gap-4 mb-10">
@@ -1189,7 +1165,7 @@
             </svg>
           </div>
           <div>
-            <p class="text-xs text-muted mb-1">Email</p>
+            <p class="text-xs text-muted mb-1" data-i18n="contact.email.label">이메일</p>
             <p class="text-sm font-medium text-white">kevin@imagoworks.ai</p>
           </div>
         </a>
@@ -1202,7 +1178,7 @@
             </svg>
           </div>
           <div>
-            <p class="text-xs text-muted mb-1">Phone (Office)</p>
+            <p class="text-xs text-muted mb-1" data-i18n="contact.phone.label">전화 (사무실)</p>
             <p class="text-sm font-medium text-white">+82-2-6925-2093</p>
           </div>
         </div>
@@ -1216,9 +1192,9 @@
             </svg>
           </div>
           <div>
-            <p class="text-xs text-muted mb-1">Location</p>
-            <p class="text-sm font-medium text-white">Gangnam-gu, Seoul</p>
-            <p class="text-xs text-slate-500">Republic of Korea</p>
+            <p class="text-xs text-muted mb-1" data-i18n="contact.location.label">위치</p>
+            <p class="text-sm font-medium text-white" data-i18n="contact.location.city">강남구, 서울</p>
+            <p class="text-xs text-slate-500" data-i18n="contact.location.country">대한민국</p>
           </div>
         </div>
       </div>
@@ -1238,8 +1214,8 @@
   <!-- ════════════════════ FOOTER ════════════════════ -->
   <footer class="border-t border-slate-800 py-8">
     <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
-      <p>© 2024 Youngjun Kim, Ph.D. All rights reserved.</p>
-      <p class="font-mono">Imagoworks, Inc. · KIST · UST</p>
+      <p data-i18n="footer.rights">© 2024 김영준, Ph.D. All rights reserved.</p>
+      <p class="font-mono" data-i18n="footer.affil">Imagoworks, Inc. · KIST · UST</p>
     </div>
   </footer>
 
@@ -1322,7 +1298,9 @@
     document.getElementById('toggle-awards').addEventListener('click', () => {
       showAll = !showAll;
       renderAwards();
-      document.getElementById('toggle-awards-text').textContent = showAll ? 'Show fewer' : 'Show all awards';
+      const t = (typeof translations !== 'undefined' && translations[currentLang]) || {};
+      document.getElementById('toggle-awards-text').innerHTML =
+        showAll ? (t['awards.show_less'] || 'Show fewer') : (t['awards.show_more'] || 'Show all awards');
       document.getElementById('toggle-awards-icon').style.transform = showAll ? 'rotate(180deg)' : 'rotate(0)';
     });
 
@@ -1439,6 +1417,402 @@
       btn.addEventListener('click', () => setTabs(btn.dataset.tab));
     });
     setTabs('journal');
+
+    // ── Translations ──────────────────────────────────────────────
+    const translations = {
+      ko: {
+        /* Navbar */
+        'nav.about': '연구 분야',
+        'nav.imagoworks': '이마고웍스',
+        'nav.experience': '경력',
+        'nav.education': '학력',
+        'nav.awards': '수상',
+        'nav.publications': '논문',
+        'nav.contact': '연락처',
+        'nav.cta': '연락하기',
+
+        /* Hero */
+        'hero.badge': 'CEO & 창업자 · 책임연구원 · 부교수',
+        'hero.desc': '<span class="text-accent font-medium">인공지능</span>과 <span class="text-accent2 font-medium">의료영상</span>의 교차점을 개척합니다. 수술 계획, 진단, 환자 치료 결과를 혁신하는 지능형 소프트웨어를 구축합니다.',
+        'hero.tag1': '의료 AI',
+        'hero.tag2': '3D 영상 정합',
+        'hero.tag3': '딥러닝',
+        'hero.tag4': '수술 계획',
+        'hero.tag5': '컴퓨터 비전',
+        'hero.tag6': 'VR/AR 수술',
+        'hero.btn1': '이마고웍스 소개',
+        'hero.btn2': '논문 보기',
+        'hero.btn3': '연락하기',
+
+        /* Stats */
+        'stat.journal': '저널<br/>논문',
+        'stat.conf': '학회<br/>논문',
+        'stat.awards': '수상<br/>실적',
+        'stat.years': '연구 경력',
+        'stat.society': '전문학회',
+
+        /* Affiliations */
+        'aff.imagoworks': 'Imagoworks — CEO & 창업자',
+        'aff.kist': 'KIST — 책임연구원',
+        'aff.ust': 'UST — 부교수',
+        'aff.stanford': 'Stanford — 박사후연구원 (2013-14)',
+
+        /* About */
+        'about.label': '01 — 연구 분야',
+        'about.title': '연구 주제',
+        'card.ai.title': '의료 AI & 딥러닝',
+        'card.ai.desc': 'CT, MRI, X-ray 등 의료영상에 대한 자동 분할·분류·진단 딥러닝 모델 개발.',
+        'card.surgical.title': '3D 수술 계획',
+        'card.surgical.desc': '3D 모델링과 시뮬레이션을 활용한 악안면 재건·정형외과·치과 수술 계획 가상 소프트웨어 개발.',
+        'card.reg.title': '영상 정합',
+        'card.reg.desc': '수술 내비게이션, 방사선치료 환자 자세 설정, 수술 후 분석을 위한 2D-3D 및 변형 표면 정합 연구.',
+        'card.vr.title': 'VR/AR 수술',
+        'card.vr.desc': '가상·증강현실 기술을 수술 시뮬레이션, 수술 전 훈련, 수술 중 안내 시스템에 적용.',
+        'card.robot.title': '수술 로봇',
+        'card.robot.desc': '수술 로봇 시스템 최적화, 엔드이펙터 경로 계획, 충돌 회피, 최소침습 수술을 위한 마커리스 내비게이션.',
+        'tag.seg': '분할', 'tag.diag': '진단',
+        'tag.3d': '3D 모델링', 'tag.vrsurg': 'VR 수술',
+        'tag.rt': '방사선치료', 'tag.nav': '내비게이션',
+        'tag.sim': '시뮬레이션',
+        'tag.robo': '로봇', 'tag.nav2': '내비게이션', 'tag.plan': '계획',
+
+        /* Imagoworks */
+        'imago.label': '02 — 이마고웍스',
+        'imago.title': 'Imagoworks, Inc.',
+        'imago.desc': 'AI 기반 디지털 덴티스트리 전문 기업 — KIST 공식 스핀오프로 2019년 창업, 전 세계 110개국 치과 워크플로우를 혁신 중입니다.',
+
+        /* Experience */
+        'exp.label': '03 — 경력',
+        'exp.title': '경력 사항',
+        'exp1.title': 'CEO & 창업자',
+        'exp1.company': 'Imagoworks, Inc.',
+        'exp1.period': '2019.11 — 현재',
+        'exp1.desc': 'AI 의료 소프트웨어 전문 기업 창업 및 경영. 2019년 Johnson &amp; Johnson 서울 이노베이션 퀵파이어챌린지(스마트 헬스케어) 우승. 다수의 정부 표창 수훈.',
+        'etag1.1': '스타트업 경영', 'etag1.2': '치과 AI', 'etag1.3': '제품 전략', 'etag1.4': '투자유치',
+        'exp2.title': '책임연구원',
+        'exp2.company': '한국과학기술연구원 (KIST) — 바이오닉스연구센터',
+        'exp2.period': '2018.03 — 현재',
+        'exp2.desc': '의료 AI 및 컴퓨터 지원 수술 시스템 연구 선도. 이전에는 선임연구원(2011–2018) 및 스타박사후연구원(2009–2011)으로 재직.',
+        'etag2.1': '의료영상', 'etag2.2': 'AI 연구', 'etag2.3': '팀 리더십',
+        'exp3.title': '부교수',
+        'exp3.company': '과학기술연합대학원대학교 (UST) — KIST 스쿨 바이오메디컬과학기술학부',
+        'exp3.period': '2012.03 — 현재',
+        'exp3.desc': '생명의학과학기술 분야 대학원생 교육 및 연구 지도.',
+        'etag3.1': '대학원 강의', 'etag3.2': '연구 지도', 'etag3.3': '의공학',
+        'exp4.title': '박사후연구원',
+        'exp4.company': 'Stanford University — 방사선종양학과',
+        'exp4.period': '2013.05 — 2014.04',
+        'exp4.desc': 'Lei Xing 교수 지도 하에 방사선치료 환자 세팅을 위한 변형 표면 정합 연구. 두경부암 치료 정밀도 향상.',
+        'etag4.1': '방사선치료', 'etag4.2': '표면 정합', 'etag4.3': '환자 자세 설정',
+        'exp5.title': '수석연구원',
+        'exp5.company': 'K&I Technology Co., Ltd — K&I 연구센터',
+        'exp5.period': '2003.03 — 2009.08',
+        'exp5.desc': 'C++, MFC, OpenGL, OpenCV, VTK, ITK, CUDA를 활용한 의료 시각화 소프트웨어 연구개발.',
+
+        /* Education */
+        'edu.label': '04 — 학력',
+        'edu.title': '학력 사항',
+        'edu1.degree': '박사후연구원',
+        'edu1.school': 'Stanford University, 미국',
+        'edu1.dept': '방사선종양학과',
+        'edu1.thesis': '방사선치료 환자 세팅을 위한 변형 표면 정합<br/><span class="text-slate-600">지도: Lei Xing 교수</span>',
+        'edu2.degree': '공학박사',
+        'edu2.school': '서울대학교',
+        'edu2.dept': '기계항공공학부',
+        'edu2.thesis': '2D-3D 의료영상 정합을 이용한 인공관절 수술 후 3D 분석<br/><span class="text-slate-600">지도: 이건우 교수</span>',
+        'edu3.degree': '공학석사',
+        'edu3.school': '서울대학교',
+        'edu3.dept': '기계항공공학부',
+        'edu4.degree': '공학학사',
+        'edu4.school': '서울대학교',
+        'edu4.dept': '기계항공공학부',
+        'edu4.note': '학업우수장학금 수혜 (1998–2000)',
+
+        /* Awards */
+        'awards.label': '05 — 수상',
+        'awards.title': '수상 내역',
+        'hl1.title': '대통령 표창',
+        'hl1.org': '대한민국',
+        'hl1.date': '2023년 12월',
+        'hl2.title': 'J&J 퀵파이어 챌린지 우승',
+        'hl2.org': '서울 이노베이션 · 스마트 헬스케어<br/>상금: ~US $75K + 서울바이오허브 1년 입주',
+        'hl2.date': '2019년 11월',
+        'hl3.title': '장관 표창',
+        'hl3.org': '과학기술정보통신부<br/>"AI 산업 발전 기여"',
+        'hl3.date': '2022년 12월',
+        'awards.all.title': '전체 수상 목록',
+        'awards.show_more': '전체 수상 내역 보기',
+        'awards.show_less': '접기',
+
+        /* Publications */
+        'pub.label': '06 — 논문',
+        'pub.title': '주요 논문',
+        'pub.stat1': '저널 논문',
+        'pub.stat2': '학회 논문',
+        'pub.stat3': '저서',
+        'pub.stat4': '백서',
+        'tab.journal': '저널 논문',
+        'tab.conference': '학회 논문',
+        'tab.book': '저서 & 백서',
+        'pub.load_more': '더 보기',
+
+        /* Memberships */
+        'mem.label': '07 — 학회',
+        'mem.title': '전문학회 활동',
+        'mem1.role': 'AI 워킹그룹',
+        'mem1.org': 'FDI 세계치과연맹',
+        'mem1.period': '2021 — 2023',
+        'mem2.role': '위원',
+        'mem2.org': '대한의료인공지능학회',
+        'mem2.period': '2018 — 현재',
+        'mem3.role': '위원',
+        'mem3.org': '대한의료영상정보학회',
+        'mem3.period': '2016 — 현재',
+        'mem4.role': '위원',
+        'mem4.org': '한국CDE학회',
+        'mem4.period': '2016 — 현재',
+        'mem5.role': '위원',
+        'mem5.org': '대한시뮬레이션수술학회',
+        'mem5.period': '2015 — 현재',
+
+        /* Contact */
+        'contact.label': '08 — 연락처',
+        'contact.title': '연락하기',
+        'contact.desc': '공동연구, 이마고웍스 협력, 또는 강연 요청 등 편하게 연락 주세요.',
+        'contact.email.label': '이메일',
+        'contact.phone.label': '전화 (사무실)',
+        'contact.location.label': '위치',
+        'contact.location.city': '강남구, 서울',
+        'contact.location.country': '대한민국',
+
+        /* Footer */
+        'footer.rights': '© 2024 김영준, Ph.D. All rights reserved.',
+        'footer.affil': 'Imagoworks, Inc. · KIST · UST',
+      },
+
+      en: {
+        /* Navbar */
+        'nav.about': 'Research',
+        'nav.imagoworks': 'Imagoworks',
+        'nav.experience': 'Experience',
+        'nav.education': 'Education',
+        'nav.awards': 'Awards',
+        'nav.publications': 'Publications',
+        'nav.contact': 'Contact',
+        'nav.cta': 'Contact',
+
+        /* Hero */
+        'hero.badge': 'CEO & Founder · Principal Researcher · Associate Professor',
+        'hero.desc': 'Pioneering the intersection of <span class="text-accent font-medium">Artificial Intelligence</span> and <span class="text-accent2 font-medium">Medical Imaging</span>. Building intelligent software that transforms surgical planning, diagnostics, and patient outcomes.',
+        'hero.tag1': 'Medical AI',
+        'hero.tag2': '3D Image Reg.',
+        'hero.tag3': 'Deep Learning',
+        'hero.tag4': 'Surgical Planning',
+        'hero.tag5': 'Computer Vision',
+        'hero.tag6': 'VR/AR Surgery',
+        'hero.btn1': 'About Imagoworks',
+        'hero.btn2': 'View Publications',
+        'hero.btn3': 'Contact Me',
+
+        /* Stats */
+        'stat.journal': 'Journal<br/>Papers',
+        'stat.conf': 'Conference<br/>Papers',
+        'stat.awards': 'Awards &<br/>Honors',
+        'stat.years': 'Years Research',
+        'stat.society': 'Societies',
+
+        /* Affiliations */
+        'aff.imagoworks': 'Imagoworks — CEO & Founder',
+        'aff.kist': 'KIST — Principal Researcher',
+        'aff.ust': 'UST — Associate Professor',
+        'aff.stanford': 'Stanford — Postdoc (2013-14)',
+
+        /* About */
+        'about.label': '01 — Research Areas',
+        'about.title': 'Research Themes',
+        'card.ai.title': 'Medical AI & Deep Learning',
+        'card.ai.desc': 'Developing deep learning models for automatic segmentation, classification, and diagnosis of medical images including CT, MRI, and X-ray.',
+        'card.surgical.title': '3D Surgical Planning',
+        'card.surgical.desc': 'Virtual surgical planning software for maxillofacial reconstruction, orthopedic surgery, and dental procedures using 3D modeling and simulation.',
+        'card.reg.title': 'Image Registration',
+        'card.reg.desc': 'Research on 2D-3D and deformable surface registration for surgical navigation, radiotherapy patient positioning, and postoperative analysis.',
+        'card.vr.title': 'VR/AR Surgery',
+        'card.vr.desc': 'Applying virtual and augmented reality to surgical simulation, pre-operative training, and intraoperative guidance systems.',
+        'card.robot.title': 'Surgical Robotics',
+        'card.robot.desc': 'Surgical robot system optimization, end-effector path planning, collision avoidance, and markerless navigation for minimally invasive surgery.',
+        'tag.seg': 'Segmentation', 'tag.diag': 'Diagnosis',
+        'tag.3d': '3D Modeling', 'tag.vrsurg': 'VR Surgery',
+        'tag.rt': 'Radiotherapy', 'tag.nav': 'Navigation',
+        'tag.sim': 'Simulation',
+        'tag.robo': 'Robotics', 'tag.nav2': 'Navigation', 'tag.plan': 'Planning',
+
+        /* Imagoworks */
+        'imago.label': '02 — Imagoworks',
+        'imago.title': 'Imagoworks, Inc.',
+        'imago.desc': 'AI-powered digital dentistry company — official KIST spin-off founded in 2019, transforming dental workflows in 110+ countries worldwide.',
+
+        /* Experience */
+        'exp.label': '03 — Experience',
+        'exp.title': 'Career History',
+        'exp1.title': 'CEO & Founder',
+        'exp1.company': 'Imagoworks, Inc.',
+        'exp1.period': 'Nov 2019 — Present',
+        'exp1.desc': 'Founded and leads an AI medical software company. Won the 2019 Johnson &amp; Johnson Seoul Innovation QuickFire Challenge (Smart Healthcare). Recipient of multiple government commendations.',
+        'etag1.1': 'Startup Management', 'etag1.2': 'Dental AI', 'etag1.3': 'Product Strategy', 'etag1.4': 'Fundraising',
+        'exp2.title': 'Principal Researcher',
+        'exp2.company': 'Korea Institute of Science and Technology (KIST) — Bionics Research Center',
+        'exp2.period': 'Mar 2018 — Present',
+        'exp2.desc': 'Leading research in medical AI and computer-assisted surgical systems. Previously served as Senior Researcher (2011–2018) and STAR Postdoctoral Fellow (2009–2011).',
+        'etag2.1': 'Medical Imaging', 'etag2.2': 'AI Research', 'etag2.3': 'Team Leadership',
+        'exp3.title': 'Associate Professor',
+        'exp3.company': 'University of Science and Technology (UST) — KIST School, Dept. of Biomedical Science & Technology',
+        'exp3.period': 'Mar 2012 — Present',
+        'exp3.desc': 'Teaching and supervising graduate students in the field of biomedical science and technology.',
+        'etag3.1': 'Graduate Teaching', 'etag3.2': 'Research Mentorship', 'etag3.3': 'Biomedical Engineering',
+        'exp4.title': 'Postdoctoral Researcher',
+        'exp4.company': 'Stanford University — Department of Radiation Oncology',
+        'exp4.period': 'May 2013 — Apr 2014',
+        'exp4.desc': 'Conducted research on deformable surface registration for radiotherapy patient positioning under Prof. Lei Xing. Improved treatment accuracy for head-and-neck cancer.',
+        'etag4.1': 'Radiotherapy', 'etag4.2': 'Surface Registration', 'etag4.3': 'Patient Positioning',
+        'exp5.title': 'Senior Researcher',
+        'exp5.company': 'K&I Technology Co., Ltd — K&I Research Center',
+        'exp5.period': 'Mar 2003 — Aug 2009',
+        'exp5.desc': 'R&D of medical visualization software using C++, MFC, OpenGL, OpenCV, VTK, ITK, and CUDA.',
+
+        /* Education */
+        'edu.label': '04 — Education',
+        'edu.title': 'Academic Background',
+        'edu1.degree': 'Postdoctoral Fellow',
+        'edu1.school': 'Stanford University, USA',
+        'edu1.dept': 'Department of Radiation Oncology',
+        'edu1.thesis': 'Deformable surface registration for radiotherapy patient positioning<br/><span class="text-slate-600">Advisor: Prof. Lei Xing</span>',
+        'edu2.degree': 'Ph.D. in Engineering',
+        'edu2.school': 'Seoul National University',
+        'edu2.dept': 'Mechanical & Aerospace Engineering',
+        'edu2.thesis': '3D postoperative analysis of total knee arthroplasty using 2D-3D medical image registration<br/><span class="text-slate-600">Advisor: Prof. Kunwoo Lee</span>',
+        'edu3.degree': 'Master of Science',
+        'edu3.school': 'Seoul National University',
+        'edu3.dept': 'Mechanical & Aerospace Engineering',
+        'edu4.degree': 'Bachelor of Science',
+        'edu4.school': 'Seoul National University',
+        'edu4.dept': 'Mechanical & Aerospace Engineering',
+        'edu4.note': 'Academic Excellence Scholarship (1998–2000)',
+
+        /* Awards */
+        'awards.label': '05 — Awards',
+        'awards.title': 'Awards & Honors',
+        'hl1.title': 'Presidential Commendation',
+        'hl1.org': 'Republic of Korea',
+        'hl1.date': 'December 2023',
+        'hl2.title': 'J&J QuickFire Challenge Winner',
+        'hl2.org': 'Seoul Innovation · Smart Healthcare<br/>Prize: ~US $75K + 1yr Seoul Biohub residency',
+        'hl2.date': 'November 2019',
+        'hl3.title': "Minister's Commendation",
+        'hl3.org': 'Ministry of Science and ICT<br/>"Contribution to AI industry"',
+        'hl3.date': 'December 2022',
+        'awards.all.title': 'Full Awards List',
+        'awards.show_more': 'Show all awards',
+        'awards.show_less': 'Show fewer',
+
+        /* Publications */
+        'pub.label': '06 — Publications',
+        'pub.title': 'Selected Publications',
+        'pub.stat1': 'Journal Papers',
+        'pub.stat2': 'Conference Papers',
+        'pub.stat3': 'Book',
+        'pub.stat4': 'White Papers',
+        'tab.journal': 'Journal Papers',
+        'tab.conference': 'Conference Papers',
+        'tab.book': 'Books & White Papers',
+        'pub.load_more': 'Load more',
+
+        /* Memberships */
+        'mem.label': '07 — Societies',
+        'mem.title': 'Professional Memberships',
+        'mem1.role': 'AI Working Group',
+        'mem1.org': 'FDI World Dental Federation',
+        'mem1.period': '2021 — 2023',
+        'mem2.role': 'Committee Member',
+        'mem2.org': 'Korean Society of AI in Medicine',
+        'mem2.period': '2018 — Present',
+        'mem3.role': 'Committee Member',
+        'mem3.org': 'Korean Society of Medical Informatics',
+        'mem3.period': '2016 — Present',
+        'mem4.role': 'Committee Member',
+        'mem4.org': 'Korean Society of CDE',
+        'mem4.period': '2016 — Present',
+        'mem5.role': 'Committee Member',
+        'mem5.org': 'Korean Society for Simulation Surgery',
+        'mem5.period': '2015 — Present',
+
+        /* Contact */
+        'contact.label': '08 — Contact',
+        'contact.title': 'Get in Touch',
+        'contact.desc': 'Feel free to reach out for research collaboration, Imagoworks partnerships, or speaking invitations.',
+        'contact.email.label': 'Email',
+        'contact.phone.label': 'Phone (Office)',
+        'contact.location.label': 'Location',
+        'contact.location.city': 'Gangnam-gu, Seoul',
+        'contact.location.country': 'Republic of Korea',
+
+        /* Footer */
+        'footer.rights': '© 2024 Youngjun Kim, Ph.D. All rights reserved.',
+        'footer.affil': 'Imagoworks, Inc. · KIST · UST',
+      },
+    };
+
+    let currentLang = 'ko';
+
+    function setLang(lang) {
+      currentLang = lang;
+
+      // Update all data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const t = translations[lang];
+        if (t && t[key] !== undefined) {
+          el.innerHTML = t[key];
+        }
+      });
+
+      // Update toggle button styling (desktop + mobile)
+      ['btn-ko', 'mob-btn-ko'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        if (lang === 'ko') {
+          btn.style.background = 'linear-gradient(135deg,#38bdf8,#818cf8)';
+          btn.style.color = '#fff';
+        } else {
+          btn.style.background = 'transparent';
+          btn.style.color = '#94a3b8';
+        }
+      });
+      ['btn-en', 'mob-btn-en'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        if (lang === 'en') {
+          btn.style.background = 'linear-gradient(135deg,#38bdf8,#818cf8)';
+          btn.style.color = '#fff';
+        } else {
+          btn.style.background = 'transparent';
+          btn.style.color = '#94a3b8';
+        }
+      });
+
+      // Update awards toggle button text
+      const toggleText = document.getElementById('toggle-awards-text');
+      if (toggleText) {
+        toggleText.innerHTML = showAll
+          ? translations[lang]['awards.show_less']
+          : translations[lang]['awards.show_more'];
+      }
+
+      // Update html lang attribute
+      document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
+    }
+
+    // Initialize with Korean
+    setLang('ko');
   </script>
 </body>
 </html>
