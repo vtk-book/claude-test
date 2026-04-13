@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.biotimes.co.kr)",
+      "WebFetch(domain:www.hellodd.com)",
+      "WebFetch(domain:news.nate.com)",
+      "WebFetch(domain:kmdf.org)",
+      "WebFetch(domain:thevc.kr)",
+      "WebFetch(domain:www.rocketpunch.com)",
+      "WebFetch(domain:www.jointips.or.kr)",
+      "WebFetch(domain:wowtale.net)",
+      "WebFetch(domain:imagoworks.ai)",
+      "WebFetch(domain:dentbird.com)",
+      "WebFetch(domain:www.hankyung.com)",
+      "WebFetch(domain:www.compendiumlive.com)",
+      "WebFetch(domain:dentbird.kr)",
+      "WebFetch(domain:international-dental-show.dental-tribune.com)",
+      "WebFetch(domain:www.dental-tribune.com)",
+      "WebFetch(domain:tracxn.com)",
+      "WebFetch(domain:career.imagoworks.ai)",
+      "WebFetch(domain:www.dentalarirang.com)"
+    ]
+  }
+}

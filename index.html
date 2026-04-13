@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youngjun Kim, Ph.D. — Researcher & Entrepreneur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f172a',
+            accent: '#38bdf8',
+            accent2: '#818cf8',
+            surface: '#1e293b',
+            muted: '#64748b',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s ease forwards',
+            'fade-in': 'fadeIn 0.8s ease forwards',
+            'slide-in-left': 'slideInLeft 0.6s ease forwards',
+            'glow': 'glow 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: 0, transform: 'translateY(30px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 },
+            },
+            slideInLeft: {
+              '0%': { opacity: 0, transform: 'translateX(-30px)' },
+              '100%': { opacity: 1, transform: 'translateX(0)' },
+            },
+            glow: {
+              '0%, 100%': { opacity: 0.4 },
+              '50%': { opacity: 1 },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Base ── */
+    * { box-sizing: border-box; }
+    body { background-color: #0f172a; color: #e2e8f0; }
+
+    /* ── Gradient text ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Glassmorphism card ── */
+    .glass {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+    .glass:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      background: rgba(30, 41, 59, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    /* ── Hero background ── */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(129, 140, 248, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 60% 80%, rgba(192, 132, 252, 0.06) 0%, transparent 60%),
+        #0f172a;
+    }
+
+    /* ── Grid dots ── */
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(148,163,184,0.12) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ── Timeline ── */
+    .timeline-line {
+      background: linear-gradient(to bottom, #38bdf8, #818cf8, #c084fc);
+    }
+    .timeline-dot {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+    }
+
+    /* ── Tag pills ── */
+    .tag {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: #7dd3fc;
+      font-size: 0.72rem;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Section heading line ── */
+    .section-line {
+      background: linear-gradient(90deg, #38bdf8, #818cf8, transparent);
+      height: 2px;
+      border-radius: 2px;
+    }
+
+    /* ── Award badge ── */
+    .award-badge {
+      background: linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.04));
+      border: 1px solid rgba(251,191,36,0.25);
+    }
+    .award-star {
+      color: #fbbf24;
+      text-shadow: 0 0 8px rgba(251,191,36,0.6);
+    }
+
+    /* ── Publication card ── */
+    .pub-card {
+      border-left: 2px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .pub-card:hover { border-left-color: #38bdf8; background: rgba(56,189,248,0.04); }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── Nav ── */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Stat counter ── */
+    .stat-box {
+      background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(129,140,248,0.08));
+      border: 1px solid rgba(56,189,248,0.15);
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+    /* ── Mobile nav ── */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ════════════════════ NAVBAR ════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="font-mono text-sm font-medium text-accent tracking-widest uppercase select-none">
+        YJ<span class="text-accent2">.</span>KIM
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+        <a href="#about"        class="nav-link hover:text-white transition-colors">About</a>
+        <a href="#imagoworks"   class="nav-link hover:text-white transition-colors">Imagoworks</a>
+        <a href="#experience"   class="nav-link hover:text-white transition-colors">Experience</a>
+        <a href="#education"    class="nav-link hover:text-white transition-colors">Education</a>
+        <a href="#awards"       class="nav-link hover:text-white transition-colors">Awards</a>
+        <a href="#publications" class="nav-link hover:text-white transition-colors">Publications</a>
+        <a href="#contact"      class="nav-link hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <!-- CTA -->
+      <a href="mailto:kevin@imagoworks.ai"
+         class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border border-accent/40 text-accent hover:bg-accent/10 transition-all duration-200">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        Get in touch
+      </a>
+
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden text-slate-400 hover:text-white" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden flex-col px-6 pb-4 gap-3 text-sm font-medium text-slate-300 glass border-t border-slate-800">
+      <a href="#about"        class="py-2 hover:text-accent transition-colors">About</a>
+      <a href="#imagoworks"   class="py-2 hover:text-accent transition-colors">Imagoworks</a>
+      <a href="#experience"   class="py-2 hover:text-accent transition-colors">Experience</a>
+      <a href="#education"    class="py-2 hover:text-accent transition-colors">Education</a>
+      <a href="#awards"       class="py-2 hover:text-accent transition-colors">Awards</a>
+      <a href="#publications" class="py-2 hover:text-accent transition-colors">Publications</a>
+      <a href="#contact"      class="py-2 hover:text-accent transition-colors">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════ HERO ════════════════════ -->
+  <section id="hero" class="hero-bg dot-grid min-h-screen flex items-center pt-20">
+    <div class="max-w-6xl mx-auto px-6 py-24 w-full">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: Text -->
+        <div class="space-y-8">
+          <div class="animate-fade-in-up" style="animation-delay:0.1s; opacity:0; animation-fill-mode:forwards;">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border border-accent/30 text-accent bg-accent/5">
+              <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+              CEO &amp; Founder · Principal Researcher · Associate Professor
+            </span>
+          </div>
+
+          <div class="space-y-3" style="animation-delay:0.2s;">
+            <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-none animate-fade-in-up" style="animation-delay:0.2s; opacity:0; animation-fill-mode:forwards;">
+              Youngjun Kim
+              <span class="block text-3xl lg:text-4xl font-light text-slate-400 mt-2">Ph.D.</span>
+            </h1>
+            <div class="section-line w-32 mt-4 animate-fade-in-up" style="animation-delay:0.35s; opacity:0; animation-fill-mode:forwards;"></div>
+          </div>
+
+          <p class="text-slate-400 text-lg leading-relaxed max-w-lg animate-fade-in-up" style="animation-delay:0.4s; opacity:0; animation-fill-mode:forwards;">
+            Pioneering the intersection of <span class="text-accent font-medium">Artificial Intelligence</span> and
+            <span class="text-accent2 font-medium">Medical Imaging</span>. Building intelligent software that transforms surgical planning, diagnostics, and patient outcomes.
+          </p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 animate-fade-in-up" style="animation-delay:0.5s; opacity:0; animation-fill-mode:forwards;">
+            <span class="tag">Medical AI</span>
+            <span class="tag">3D Image Registration</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Surgical Planning</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">VR/AR in Surgery</span>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay:0.6s; opacity:0; animation-fill-mode:forwards;">
+            <a href="#imagoworks"
+               class="px-6 py-3 rounded-xl font-semibold text-sm text-white"
+               style="background: linear-gradient(135deg, #38bdf8, #818cf8);">
+              Imagoworks 소개
+            </a>
+            <a href="#publications"
+               class="px-6 py-3 rounded-xl font-semibold text-sm border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all">
+              Publications
+            </a>
+            <a href="#contact"
+               class="px-6 py-3 rounded-xl font-semibold text-sm border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all">
+              Contact
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Stats card -->
+        <div class="flex justify-center lg:justify-end animate-fade-in" style="animation-delay:0.5s; opacity:0; animation-fill-mode:forwards;">
+          <div class="relative">
+            <!-- Glow effect -->
+            <div class="absolute inset-0 rounded-3xl blur-3xl opacity-20" style="background: linear-gradient(135deg, #38bdf8, #818cf8);"></div>
+            <div class="relative glass rounded-3xl p-8 w-full max-w-sm space-y-6">
+              <!-- Profile photo -->
+              <div class="flex items-center gap-4">
+                <div class="relative w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0"
+                     style="border: 2px solid rgba(56,189,248,0.4); box-shadow: 0 0 20px rgba(56,189,248,0.2);">
+                  <img src="https://opening-attachments.greetinghr.com/2025-05-15/4a1d79b3-0886-4e62-93ae-1aea56d7f88e/_Main.png.webp"
+                       alt="Youngjun Kim"
+                       class="w-full h-full object-cover"
+                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="absolute inset-0 hidden items-center justify-center text-2xl font-bold text-white"
+                       style="background: linear-gradient(135deg, #38bdf8, #818cf8);">YK</div>
+                </div>
+                <div>
+                  <p class="font-semibold text-white">Youngjun Kim</p>
+                  <p class="text-sm text-muted">Imagoworks, Inc.</p>
+                  <p class="text-xs text-accent font-mono">kevin@imagoworks.ai</p>
+                </div>
+              </div>
+
+              <div class="section-line w-full opacity-40"></div>
+
+              <!-- Stats -->
+              <div class="grid grid-cols-3 gap-3">
+                <div class="stat-box rounded-xl p-3 text-center">
+                  <p class="text-2xl font-extrabold gradient-text">54</p>
+                  <p class="text-xs text-muted mt-1">Journal<br/>Articles</p>
+                </div>
+                <div class="stat-box rounded-xl p-3 text-center">
+                  <p class="text-2xl font-extrabold gradient-text">44</p>
+                  <p class="text-xs text-muted mt-1">Conf.<br/>Papers</p>
+                </div>
+                <div class="stat-box rounded-xl p-3 text-center">
+                  <p class="text-2xl font-extrabold gradient-text">22</p>
+                  <p class="text-xs text-muted mt-1">Awards<br/>Won</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="stat-box rounded-xl p-3 text-center">
+                  <p class="text-xl font-extrabold gradient-text">25+</p>
+                  <p class="text-xs text-muted mt-1">Years Research</p>
+                </div>
+                <div class="stat-box rounded-xl p-3 text-center">
+                  <p class="text-xl font-extrabold gradient-text">5</p>
+                  <p class="text-xs text-muted mt-1">Prof. Society</p>
+                </div>
+              </div>
+
+              <!-- Affiliation badges -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
+                  <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                  <span class="text-xs text-slate-300">Imagoworks — CEO &amp; Founder</span>
+                </div>
+                <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
+                  <div class="w-2 h-2 rounded-full bg-blue-400"></div>
+                  <span class="text-xs text-slate-300">KIST — Principal Researcher</span>
+                </div>
+                <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
+                  <div class="w-2 h-2 rounded-full bg-purple-400"></div>
+                  <span class="text-xs text-slate-300">UST — Associate Professor</span>
+                </div>
+                <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-800/50">
+                  <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                  <span class="text-xs text-slate-300">Stanford — Postdoc (2013-14)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="flex justify-center mt-20 animate-bounce">
+        <a href="#about" class="text-slate-600 hover:text-accent transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ ABOUT ════════════════════ -->
+  <section id="about" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal mb-16">
+        <p class="text-accent font-mono text-sm mb-2">01 — About</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Research Focus</h2>
+        <div class="section-line w-24"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="reveal glass rounded-2xl p-6 space-y-4 cursor-default">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(56,189,248,0.05)); border:1px solid rgba(56,189,248,0.2);">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white">Medical AI &amp; Deep Learning</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Developing deep learning models for automated segmentation, classification, and diagnosis of medical images including CT, MRI, and X-ray data.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">CNN</span><span class="tag">Segmentation</span><span class="tag">Diagnosis</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reveal glass rounded-2xl p-6 space-y-4 cursor-default" style="transition-delay:0.1s">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background: linear-gradient(135deg, rgba(129,140,248,0.15), rgba(129,140,248,0.05)); border:1px solid rgba(129,140,248,0.2);">
+            <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white">3D Surgical Planning</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Creating virtual surgical planning software for maxillofacial reconstruction, orthopedic surgery, and dental procedures using 3D modeling and simulation.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">3D Modeling</span><span class="tag">VR Surgery</span><span class="tag">CAD</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reveal glass rounded-2xl p-6 space-y-4 cursor-default" style="transition-delay:0.2s">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background: linear-gradient(135deg, rgba(192,132,252,0.15), rgba(192,132,252,0.05)); border:1px solid rgba(192,132,252,0.2);">
+            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white">Image Registration</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Research on 2D-3D and deformable surface registration for surgical navigation, patient positioning in radiotherapy, and postoperative analysis.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">2D-3D Reg.</span><span class="tag">Radiotherapy</span><span class="tag">Navigation</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="reveal glass rounded-2xl p-6 space-y-4 cursor-default" style="transition-delay:0.1s">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background: linear-gradient(135deg, rgba(52,211,153,0.15), rgba(52,211,153,0.05)); border:1px solid rgba(52,211,153,0.2);">
+            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white">Dental AI (Imagoworks)</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Leading the development of AI-powered dental diagnostic and planning software at Imagoworks, transforming digital dentistry workflows globally.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">Dental AI</span><span class="tag">CAD/CAM</span><span class="tag">Startup</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="reveal glass rounded-2xl p-6 space-y-4 cursor-default" style="transition-delay:0.2s">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(251,191,36,0.05)); border:1px solid rgba(251,191,36,0.2);">
+            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white">VR/AR in Surgery</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Applying virtual and augmented reality technologies for surgical simulation, pre-operative training, and intraoperative guidance systems.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">VR</span><span class="tag">AR</span><span class="tag">Simulation</span>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="reveal glass rounded-2xl p-6 space-y-4 cursor-default" style="transition-delay:0.3s">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background: linear-gradient(135deg, rgba(244,63,94,0.15), rgba(244,63,94,0.05)); border:1px solid rgba(244,63,94,0.2);">
+            <svg class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white">Surgical Robotics</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Optimization of surgical robotic systems, end-effector path planning, collision avoidance, and markerless navigation for minimally invasive procedures.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            <span class="tag">Robotics</span><span class="tag">Navigation</span><span class="tag">Planning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ IMAGOWORKS ════════════════════ -->
+  <section id="imagoworks" class="py-24 bg-surface/30">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="reveal mb-16">
+        <p class="text-accent font-mono text-sm mb-2">02 — Startup</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Imagoworks, Inc.</h2>
+        <div class="section-line w-24"></div>
+        <p class="text-slate-400 mt-4 max-w-2xl">
+          AI 기반 디지털 덴티스트리 전문 기업 — KIST 공식 스핀오프로 2019년 창업, 전 세계 110개국 치과 워크플로우를 혁신 중입니다.
+        </p>
+      </div>
+
+      <!-- Top: Profile + Company intro -->
+      <div class="grid lg:grid-cols-5 gap-8 mb-14">
+
+        <!-- CEO Profile Card -->
+        <div class="reveal lg:col-span-2">
+          <div class="glass rounded-3xl overflow-hidden h-full">
+            <!-- Photo banner -->
+            <div class="relative h-56 overflow-hidden"
+                 style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+              <div class="absolute inset-0 opacity-10"
+                   style="background-image: radial-gradient(circle at 30% 50%, #38bdf8 0%, transparent 60%), radial-gradient(circle at 70% 30%, #818cf8 0%, transparent 60%);"></div>
+              <img src="https://opening-attachments.greetinghr.com/2025-05-15/4a1d79b3-0886-4e62-93ae-1aea56d7f88e/_Main.png.webp"
+                   alt="Youngjun Kim, CEO of Imagoworks"
+                   class="absolute inset-0 w-full h-full object-cover object-top"
+                   style="filter: brightness(0.9);"
+                   onerror="this.style.display='none';" />
+              <!-- Gradient overlay bottom -->
+              <div class="absolute bottom-0 left-0 right-0 h-20"
+                   style="background: linear-gradient(to top, rgba(30,41,59,0.9), transparent);"></div>
+              <!-- Name overlay -->
+              <div class="absolute bottom-4 left-5">
+                <p class="text-white font-bold text-lg leading-tight">김영준 대표</p>
+                <p class="text-accent text-xs font-mono">CEO &amp; Founder</p>
+              </div>
+            </div>
+            <!-- Info -->
+            <div class="p-6 space-y-4">
+              <blockquote class="text-slate-300 text-sm leading-relaxed italic border-l-2 border-accent/50 pl-4">
+                "어려운 경제 상황 속에서도 완료된 이번 투자는 이마고웍스의 기술력과 시장 경쟁력을 인정받은 결과입니다. 진정한 글로벌 기업으로 거듭나겠습니다."
+              </blockquote>
+              <p class="text-slate-500 text-xs text-right">— 시리즈C 투자 유치 후 발언, 2024.12</p>
+              <div class="space-y-2 pt-2">
+                <div class="flex items-center gap-2 text-xs text-slate-400">
+                  <svg class="w-3.5 h-3.5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  <span>KIST 20년 경력 기반 창업</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-400">
+                  <svg class="w-3.5 h-3.5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                  </svg>
+                  <span>서울대 박사 · Stanford 박사후연구원</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-400">
+                  <svg class="w-3.5 h-3.5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  <span>임직원 100+ 명 (2026 기준)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company Info -->
+        <div class="reveal lg:col-span-3 space-y-6" style="transition-delay:0.1s">
+
+          <!-- About Imagoworks -->
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm"
+                   style="background: linear-gradient(135deg, #38bdf8, #818cf8);">iW</div>
+              <div>
+                <h3 class="font-bold text-white">Imagoworks, Inc. <span class="text-slate-500 font-normal text-sm">/ Dentbird</span></h3>
+                <p class="text-xs text-accent font-mono">설립: 2019.11.28 · KIST 공식 스핀오프</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              AI·CAD·클라우드 기술 기반의 <strong class="text-white">AI Digital Dentistry 솔루션</strong> 전문 기업.
+              치과 보철물 제작 시간을 기존 대비 획기적으로 단축하고, 치과의사·기공사·병원 간 디지털 협업 플랫폼을 제공합니다.
+              <br/><br/>
+              <span class="text-slate-400">핵심 제품 <strong class="text-accent">Dentbird Solutions</strong>는 96개국 이상에서 누적 6만 건 이상 사용되며,
+              현재 <strong class="text-accent">110개국</strong> 치과의사·기공사를 고객으로 두고 있습니다.</span>
+            </p>
+          </div>
+
+          <!-- Products -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="glass rounded-xl p-4 space-y-1">
+              <p class="text-xs font-mono text-accent">Product 01</p>
+              <p class="font-semibold text-white text-sm">3Dme Studio</p>
+              <p class="text-xs text-slate-500">CT-구강스캔 자동 정합<br/>정확도 0.223mm</p>
+            </div>
+            <div class="glass rounded-xl p-4 space-y-1">
+              <p class="text-xs font-mono text-accent">Product 02</p>
+              <p class="font-semibold text-white text-sm">Dentbird Crown</p>
+              <p class="text-xs text-slate-500">AI 치아 크라운<br/>자동 디자인</p>
+            </div>
+            <div class="glass rounded-xl p-4 space-y-1">
+              <p class="text-xs font-mono text-accent">Product 03</p>
+              <p class="font-semibold text-white text-sm">Dentbird Batch</p>
+              <p class="text-xs text-slate-500">대량 생산<br/>자동화 솔루션</p>
+            </div>
+            <div class="glass rounded-xl p-4 space-y-1">
+              <p class="text-xs font-mono text-purple-400">Product 04</p>
+              <p class="font-semibold text-white text-sm">AOX (미국)</p>
+              <p class="text-xs text-slate-500">All-on-X 보철물<br/>AI 제작 서비스</p>
+            </div>
+            <div class="glass rounded-xl p-4 space-y-1 col-span-2">
+              <p class="text-xs font-mono text-yellow-400">Vision</p>
+              <p class="text-sm text-slate-300 leading-relaxed">"세계 최고의 3D 의료 솔루션으로<br/>사람들을 더 건강하고 행복하게"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funding Timeline -->
+      <div class="reveal mb-10">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);">
+            <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </span>
+          투자 유치 현황 · 누적 <span class="gradient-text font-extrabold">380억원</span>
+        </h3>
+
+        <div class="grid md:grid-cols-4 gap-4">
+          <div class="glass rounded-2xl p-5 border-t-2 border-green-400/50">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-green-400">2019–2021</span>
+              <span class="px-2 py-0.5 rounded text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">Seed / Pre-A</span>
+            </div>
+            <p class="text-white font-bold text-lg">초기 투자</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">TIPS 선정, J&J 퀵파이어챌린지 우승 (KRW 75M), K-스타트업 경연 (US $50K)</p>
+          </div>
+
+          <div class="glass rounded-2xl p-5 border-t-2 border-accent/50">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-accent">2021</span>
+              <span class="px-2 py-0.5 rounded text-xs font-medium bg-accent/10 text-accent border border-accent/20">Series A</span>
+            </div>
+            <p class="text-white font-bold text-lg">37억원</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">인터베스트, 컴퍼니K파트너스 등 참여. 제품 고도화 및 글로벌 준비</p>
+          </div>
+
+          <div class="glass rounded-2xl p-5 border-t-2 border-accent2/50">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-accent2">2022.11</span>
+              <span class="px-2 py-0.5 rounded text-xs font-medium bg-accent2/10 text-accent2 border border-accent2/20">Series B</span>
+            </div>
+            <p class="text-white font-bold text-lg">100억원</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">메디트 협력사 공동참여. LB인베스트먼트 신규, KB인베스트먼트 등. 태국 법인 설립</p>
+          </div>
+
+          <div class="glass rounded-2xl p-5 border-t-2 border-purple-400/50" style="background: linear-gradient(135deg, rgba(192,132,252,0.06), rgba(30,41,59,0.6));">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-purple-400">2024.12</span>
+              <span class="px-2 py-0.5 rounded text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">Series C</span>
+            </div>
+            <p class="text-white font-bold text-xl gradient-text">230억원</p>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">스틱벤처스·K2인베스트먼트 리드. 대만 TCG(치과 PE), IBK기업은행 신규 참여</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Global Expansion + News -->
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Global -->
+        <div class="reveal glass rounded-2xl p-6">
+          <h3 class="font-bold text-white mb-5 flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            글로벌 확장
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/40">
+              <span class="text-lg">🇯🇵</span>
+              <div>
+                <p class="text-sm font-medium text-white">일본 — CI Medical 파트너십</p>
+                <p class="text-xs text-slate-400">일본 최대 치과기기 유통사(7만 클리닉 네트워크). Dentbird 공급 계약 체결 (2023)</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/40">
+              <span class="text-lg">🇺🇸</span>
+              <div>
+                <p class="text-sm font-medium text-white">미국 — AOX Inc. 법인 설립</p>
+                <p class="text-xs text-slate-400">2024.6 미국 치과기공소 인수. All-on-X AI 보철물 서비스 본격 출시</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/40">
+              <span class="text-lg">🇹🇭</span>
+              <div>
+                <p class="text-sm font-medium text-white">태국 — 동남아 거점 법인</p>
+                <p class="text-xs text-slate-400">2022년 태국 법인 설립. 동남아시아 시장 공략 전진기지</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/40">
+              <span class="text-lg">🌏</span>
+              <div>
+                <p class="text-sm font-medium text-white">중동 — AEEDC 2024 두바이 참가</p>
+                <p class="text-xs text-slate-400">세계 여러 기업으로부터 B2B 협력 제안 수령. 글로벌 브랜드 각인</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-800/40">
+              <span class="text-lg">🦷</span>
+              <div>
+                <p class="text-sm font-medium text-white">IDS 2025 쾰른 — 확장 AI 워크플로우 발표</p>
+                <p class="text-xs text-slate-400">"AI가 일상이 된 지금, 치과도 AI 시대로" — CEO 김영준</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent News -->
+        <div class="reveal glass rounded-2xl p-6" style="transition-delay:0.1s">
+          <h3 class="font-bold text-white mb-5 flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+            </svg>
+            최신 뉴스 &amp; 성과
+          </h3>
+          <div class="space-y-4">
+            <a href="https://www.hankyung.com/article/202412317964i" target="_blank" rel="noopener"
+               class="block p-3 rounded-xl bg-slate-800/40 hover:bg-slate-700/40 transition-colors group">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-mono text-purple-400">2024.12</span>
+                <span class="px-1.5 py-0.5 rounded text-xs bg-purple-500/10 text-purple-400 border border-purple-500/20">Series C</span>
+              </div>
+              <p class="text-sm font-medium text-white group-hover:text-accent transition-colors">230억 시리즈C 투자 유치 — 누적 380억원 달성</p>
+              <p class="text-xs text-slate-500 mt-1">스틱벤처스, K2인베스트먼트 리드 · 글로벌 확장 가속</p>
+            </a>
+
+            <div class="block p-3 rounded-xl bg-slate-800/40">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-mono text-accent">2025.03</span>
+                <span class="px-1.5 py-0.5 rounded text-xs bg-accent/10 text-accent border border-accent/20">Global</span>
+              </div>
+              <p class="text-sm font-medium text-white">IDS 2025 참가 — AI 확장 디지털 워크플로우 발표</p>
+              <p class="text-xs text-slate-500 mt-1">쾰른 국제치과박람회서 최신 AI 솔루션 시연</p>
+            </div>
+
+            <div class="block p-3 rounded-xl bg-slate-800/40">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-mono text-accent2">2024.06</span>
+                <span class="px-1.5 py-0.5 rounded text-xs bg-accent2/10 text-accent2 border border-accent2/20">US Market</span>
+              </div>
+              <p class="text-sm font-medium text-white">미국 법인 AOX 설립 · 현지 치과기공소 인수</p>
+              <p class="text-xs text-slate-500 mt-1">North America All-on-X 보철 AI 서비스 본격화</p>
+            </div>
+
+            <div class="block p-3 rounded-xl bg-slate-800/40">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-mono text-yellow-400">2024.02</span>
+                <span class="px-1.5 py-0.5 rounded text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">AEEDC</span>
+              </div>
+              <p class="text-sm font-medium text-white">두바이 AEEDC 2024 참가 — 중동시장 본격 진출</p>
+              <p class="text-xs text-slate-500 mt-1">전 세계 기업으로부터 B2B 협력 제안 수령</p>
+            </div>
+
+            <div class="block p-3 rounded-xl bg-slate-800/40">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-mono text-green-400">2025.10</span>
+                <span class="px-1.5 py-0.5 rounded text-xs bg-green-500/10 text-green-400 border border-green-500/20">TIPS</span>
+              </div>
+              <p class="text-sm font-medium text-white">스케일업 TIPS 선정</p>
+              <p class="text-xs text-slate-500 mt-1">특허 59건, 국가 R&D 과제 8건, 임직원 100명+</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom stats row -->
+      <div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8" style="transition-delay:0.2s">
+        <div class="stat-box rounded-2xl p-5 text-center">
+          <p class="text-3xl font-extrabold gradient-text">380억</p>
+          <p class="text-xs text-muted mt-1">누적 투자유치</p>
+        </div>
+        <div class="stat-box rounded-2xl p-5 text-center">
+          <p class="text-3xl font-extrabold gradient-text">110+</p>
+          <p class="text-xs text-muted mt-1">서비스 국가</p>
+        </div>
+        <div class="stat-box rounded-2xl p-5 text-center">
+          <p class="text-3xl font-extrabold gradient-text">59</p>
+          <p class="text-xs text-muted mt-1">보유 특허</p>
+        </div>
+        <div class="stat-box rounded-2xl p-5 text-center">
+          <p class="text-3xl font-extrabold gradient-text">100+</p>
+          <p class="text-xs text-muted mt-1">임직원 수</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════ EXPERIENCE ════════════════════ -->
+  <section id="experience" class="py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal mb-16">
+        <p class="text-accent font-mono text-sm mb-2">03 — Experience</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Professional Journey</h2>
+        <div class="section-line w-24"></div>
+      </div>
+
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-6 top-2 bottom-2 w-0.5 timeline-line rounded-full hidden md:block"></div>
+
+        <div class="space-y-10">
+
+          <!-- Imagoworks -->
+          <div class="reveal md:pl-16 relative">
+            <div class="timeline-dot absolute left-4 top-1 w-4 h-4 rounded-full hidden md:block" style="margin-left:-8px;"></div>
+            <div class="glass rounded-2xl p-6">
+              <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Chief Executive Officer &amp; Founder</h3>
+                  <p class="text-accent font-medium mt-0.5">Imagoworks, Inc.</p>
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap">Nov. 2019 — Present</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Founded and leading an AI medical software company specializing in dental AI solutions. Recognized by Johnson &amp; Johnson's Seoul Innovation QuickFire Challenge (Smart Healthcare winner, 2019) and multiple government commendations for contributions to AI industry development.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="tag">Startup Leadership</span>
+                <span class="tag">Dental AI</span>
+                <span class="tag">Product Strategy</span>
+                <span class="tag">Fundraising</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- KIST Principal -->
+          <div class="reveal md:pl-16 relative" style="transition-delay:0.1s">
+            <div class="timeline-dot absolute left-4 top-1 w-4 h-4 rounded-full hidden md:block" style="margin-left:-8px;"></div>
+            <div class="glass rounded-2xl p-6">
+              <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Principal Researcher</h3>
+                  <p class="text-accent font-medium mt-0.5">Korea Institute of Science and Technology (KIST) — Center for Bionics</p>
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap">Mar. 2018 — Present</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Leading research in medical AI and computer-assisted surgical systems. Previously served as Senior Researcher (2011–2018) and Star Postdoctoral Researcher (2009–2011) at KIST, building a strong foundation in bionics and medical IT.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="tag">Medical Imaging</span>
+                <span class="tag">AI Research</span>
+                <span class="tag">Team Leadership</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- UST -->
+          <div class="reveal md:pl-16 relative" style="transition-delay:0.2s">
+            <div class="timeline-dot absolute left-4 top-1 w-4 h-4 rounded-full hidden md:block" style="margin-left:-8px;"></div>
+            <div class="glass rounded-2xl p-6">
+              <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Associate Professor</h3>
+                  <p class="text-accent font-medium mt-0.5">University of Science and Technology (UST), KIST School — Division of Bio-Medical Science &amp; Technology</p>
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-green-500/30 text-green-400 bg-green-500/5 whitespace-nowrap">Mar. 2012 — Present</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Teaching and mentoring graduate students in biomedical science and technology, bridging the gap between engineering research and medical application.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="tag">Graduate Teaching</span>
+                <span class="tag">Research Supervision</span>
+                <span class="tag">Bio-Medical Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stanford -->
+          <div class="reveal md:pl-16 relative" style="transition-delay:0.3s">
+            <div class="timeline-dot absolute left-4 top-1 w-4 h-4 rounded-full hidden md:block" style="margin-left:-8px;"></div>
+            <div class="glass rounded-2xl p-6">
+              <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Postdoctoral Scholar</h3>
+                  <p class="text-accent font-medium mt-0.5">Stanford University — Department of Radiation Oncology</p>
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-slate-500/30 text-slate-400 bg-slate-500/5 whitespace-nowrap">May 2013 — Apr. 2014</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Conducted postdoctoral research under Prof. Lei Xing on deformable surface registration for patient setup in radiotherapy, developing methods for head-and-neck cancer treatment precision.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="tag">Radiotherapy</span>
+                <span class="tag">Surface Registration</span>
+                <span class="tag">Patient Positioning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- K&I Technology -->
+          <div class="reveal md:pl-16 relative" style="transition-delay:0.4s">
+            <div class="timeline-dot absolute left-4 top-1 w-4 h-4 rounded-full hidden md:block" style="margin-left:-8px;"></div>
+            <div class="glass rounded-2xl p-6">
+              <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Chief Researcher</h3>
+                  <p class="text-accent font-medium mt-0.5">K&amp;I Technology Co., Ltd — K&amp;I Research Center</p>
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-mono border border-slate-500/30 text-slate-400 bg-slate-500/5 whitespace-nowrap">Mar. 2003 — Aug. 2009</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Led research and development in medical visualization software using C++, MFC, OpenGL, OpenCV, VTK, ITK, and CUDA, laying the technical groundwork for later medical imaging research.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="tag">C++</span><span class="tag">OpenGL</span><span class="tag">VTK</span><span class="tag">ITK</span><span class="tag">CUDA</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ EDUCATION ════════════════════ -->
+  <section id="education" class="py-24 bg-surface/30">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal mb-16">
+        <p class="text-accent font-mono text-sm mb-2">04 — Education</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Academic Background</h2>
+        <div class="section-line w-24"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Postdoc -->
+        <div class="reveal glass rounded-2xl p-6 space-y-3 border-t-2" style="border-top-color:#38bdf8;">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white"
+                  style="background:linear-gradient(135deg,#38bdf8,#818cf8);">PD</span>
+            <span class="text-xs font-mono text-accent">2013 — 2014</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Postdoctoral Scholar</h3>
+          <p class="text-accent2 font-medium text-sm">Stanford University, USA</p>
+          <p class="text-slate-400 text-sm">Radiation Oncology</p>
+          <p class="text-slate-500 text-xs leading-relaxed border-l-2 border-slate-700 pl-3">
+            Deformable surface registration for patient setup in radiotherapy<br/>
+            <span class="text-slate-600">Advisor: Prof. Lei Xing</span>
+          </p>
+        </div>
+
+        <!-- PhD -->
+        <div class="reveal glass rounded-2xl p-6 space-y-3 border-t-2" style="border-top-color:#818cf8; transition-delay:0.1s;">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white"
+                  style="background:linear-gradient(135deg,#818cf8,#c084fc);">PhD</span>
+            <span class="text-xs font-mono text-accent">2005 — 2009</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Doctor of Philosophy</h3>
+          <p class="text-accent2 font-medium text-sm">Seoul National University, Korea</p>
+          <p class="text-slate-400 text-sm">Mechanical &amp; Aerospace Engineering</p>
+          <p class="text-slate-500 text-xs leading-relaxed border-l-2 border-slate-700 pl-3">
+            3D postoperative analysis of total knee arthroplasty using 2D-3D medical image registration<br/>
+            <span class="text-slate-600">Advisor: Prof. Kunwoo Lee</span>
+          </p>
+        </div>
+
+        <!-- MS -->
+        <div class="reveal glass rounded-2xl p-6 space-y-3 border-t-2" style="border-top-color:#c084fc; transition-delay:0.2s;">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white"
+                  style="background:linear-gradient(135deg,#c084fc,#f472b6);">MS</span>
+            <span class="text-xs font-mono text-accent">2001 — 2003</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Master of Science</h3>
+          <p class="text-accent2 font-medium text-sm">Seoul National University, Korea</p>
+          <p class="text-slate-400 text-sm">Mechanical &amp; Aerospace Engineering</p>
+        </div>
+
+        <!-- BS -->
+        <div class="reveal glass rounded-2xl p-6 space-y-3 border-t-2" style="border-top-color:#f472b6; transition-delay:0.3s;">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white"
+                  style="background:linear-gradient(135deg,#f472b6,#fb923c);">BS</span>
+            <span class="text-xs font-mono text-accent">1997 — 2001</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Bachelor of Science</h3>
+          <p class="text-accent2 font-medium text-sm">Seoul National University, Korea</p>
+          <p class="text-slate-400 text-sm">Mechanical &amp; Aerospace Engineering</p>
+          <p class="text-slate-500 text-xs border-l-2 border-slate-700 pl-3">Academic Scholarship (1998–2000)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ AWARDS ════════════════════ -->
+  <section id="awards" class="py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="reveal mb-16">
+        <p class="text-accent font-mono text-sm mb-2">05 — Recognition</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Awards &amp; Honors</h2>
+        <div class="section-line w-24"></div>
+      </div>
+
+      <!-- Highlight awards -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="reveal award-badge rounded-2xl p-6 text-center space-y-3">
+          <div class="text-4xl award-star">★</div>
+          <h3 class="font-bold text-white">Presidential Commendation</h3>
+          <p class="text-sm text-slate-400">Republic of Korea</p>
+          <span class="text-xs font-mono text-yellow-500">December 2023</span>
+        </div>
+        <div class="reveal award-badge rounded-2xl p-6 text-center space-y-3" style="transition-delay:0.1s">
+          <div class="text-4xl award-star">★</div>
+          <h3 class="font-bold text-white">J&amp;J QuickFire Winner</h3>
+          <p class="text-sm text-slate-400">Seoul Innovation · Smart Healthcare<br/>Prize: ~US $75K + Seoul Biohub Residency</p>
+          <span class="text-xs font-mono text-yellow-500">November 2019</span>
+        </div>
+        <div class="reveal award-badge rounded-2xl p-6 text-center space-y-3" style="transition-delay:0.2s">
+          <div class="text-4xl award-star">★</div>
+          <h3 class="font-bold text-white">Minister's Commendation</h3>
+          <p class="text-sm text-slate-400">Ministry of Science &amp; ICT<br/>"Contribution to AI Industry"</p>
+          <span class="text-xs font-mono text-yellow-500">December 2022</span>
+        </div>
+      </div>
+
+      <!-- All awards list -->
+      <div class="reveal glass rounded-2xl p-6">
+        <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-6">Complete Awards List</h3>
+        <div class="space-y-3" id="awards-list">
+          <!-- Populated by JS -->
+        </div>
+        <button id="toggle-awards" class="mt-6 text-sm text-accent hover:text-accent2 transition-colors font-medium flex items-center gap-1">
+          <span id="toggle-awards-text">Show all awards</span>
+          <svg id="toggle-awards-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ PUBLICATIONS ════════════════════ -->
+  <section id="publications" class="py-24 bg-surface/30">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="reveal mb-16">
+        <p class="text-accent font-mono text-sm mb-2">06 — Publications</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Selected Publications</h2>
+        <div class="section-line w-24"></div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div class="stat-box rounded-xl p-4 text-center">
+          <p class="text-3xl font-extrabold gradient-text">54</p>
+          <p class="text-sm text-muted mt-1">Journal Articles</p>
+        </div>
+        <div class="stat-box rounded-xl p-4 text-center">
+          <p class="text-3xl font-extrabold gradient-text">44</p>
+          <p class="text-sm text-muted mt-1">Conference Papers</p>
+        </div>
+        <div class="stat-box rounded-xl p-4 text-center">
+          <p class="text-3xl font-extrabold gradient-text">1</p>
+          <p class="text-sm text-muted mt-1">Book</p>
+        </div>
+        <div class="stat-box rounded-xl p-4 text-center">
+          <p class="text-3xl font-extrabold gradient-text">2</p>
+          <p class="text-sm text-muted mt-1">White Papers</p>
+        </div>
+      </div>
+
+      <!-- Tab buttons -->
+      <div class="reveal flex flex-wrap gap-2 mb-8">
+        <button data-tab="journal" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all active-tab">
+          Journal Articles
+        </button>
+        <button data-tab="conference" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all">
+          Conference Papers
+        </button>
+        <button data-tab="book" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all">
+          Books &amp; White Papers
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div id="tab-journal" class="tab-content space-y-3">
+        <!-- Populated by JS -->
+      </div>
+      <div id="tab-conference" class="tab-content hidden space-y-3">
+        <!-- Populated by JS -->
+      </div>
+      <div id="tab-book" class="tab-content hidden space-y-3">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="mt-8 text-center">
+        <button id="load-more-pub" class="px-6 py-3 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-accent hover:text-accent transition-all">
+          Load more publications
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ MEMBERSHIPS ════════════════════ -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <p class="text-accent font-mono text-sm mb-2">07 — Community</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Professional Memberships</h2>
+        <div class="section-line w-24"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="reveal glass rounded-xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(129,140,248,0.1));">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-white text-sm">AI Working Group</p>
+            <p class="text-xs text-slate-400">FDI World Dental Federation</p>
+            <p class="text-xs text-accent font-mono">2021 — 2023</p>
+          </div>
+        </div>
+        <div class="reveal glass rounded-xl p-5 flex items-center gap-4" style="transition-delay:0.05s">
+          <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(129,140,248,0.1));">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-white text-sm">Committee Member</p>
+            <p class="text-xs text-slate-400">Korean Society for Artificial Intelligence in Medicine</p>
+            <p class="text-xs text-accent font-mono">2018 — Present</p>
+          </div>
+        </div>
+        <div class="reveal glass rounded-xl p-5 flex items-center gap-4" style="transition-delay:0.1s">
+          <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(129,140,248,0.1));">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-white text-sm">Committee Member</p>
+            <p class="text-xs text-slate-400">Korean Society of Imaging Informatics in Medicine</p>
+            <p class="text-xs text-accent font-mono">2016 — Present</p>
+          </div>
+        </div>
+        <div class="reveal glass rounded-xl p-5 flex items-center gap-4" style="transition-delay:0.15s">
+          <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(129,140,248,0.1));">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-white text-sm">Committee Member</p>
+            <p class="text-xs text-slate-400">Society for Computer Design and Engineering</p>
+            <p class="text-xs text-accent font-mono">2016 — Present</p>
+          </div>
+        </div>
+        <div class="reveal glass rounded-xl p-5 flex items-center gap-4 sm:col-span-2" style="transition-delay:0.2s">
+          <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(129,140,248,0.1));">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-white text-sm">Committee Member</p>
+            <p class="text-xs text-slate-400">Korean Society for Simulation Surgery</p>
+            <p class="text-xs text-accent font-mono">2015 — Present</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ CONTACT ════════════════════ -->
+  <section id="contact" class="py-24 bg-surface/30">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="reveal mb-12">
+        <p class="text-accent font-mono text-sm mb-2">08 — Contact</p>
+        <h2 class="text-3xl font-bold text-white mb-3">Get In Touch</h2>
+        <div class="section-line w-24 mx-auto"></div>
+        <p class="text-slate-400 mt-6 max-w-md mx-auto">
+          Interested in collaboration, research, or Imagoworks? Feel free to reach out.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-3 gap-4 mb-10">
+        <a href="mailto:kevin@imagoworks.ai"
+           class="glass rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-accent/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background:linear-gradient(135deg,rgba(56,189,248,0.15),rgba(56,189,248,0.05));">
+            <svg class="w-6 h-6 text-accent group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-muted mb-1">Email</p>
+            <p class="text-sm font-medium text-white">kevin@imagoworks.ai</p>
+          </div>
+        </a>
+
+        <div class="glass rounded-2xl p-6 flex flex-col items-center gap-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background:linear-gradient(135deg,rgba(129,140,248,0.15),rgba(129,140,248,0.05));">
+            <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-muted mb-1">Phone (Office)</p>
+            <p class="text-sm font-medium text-white">+82-2-6925-2093</p>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6 flex flex-col items-center gap-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background:linear-gradient(135deg,rgba(192,132,252,0.15),rgba(192,132,252,0.05));">
+            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-muted mb-1">Location</p>
+            <p class="text-sm font-medium text-white">Gangnam-gu, Seoul</p>
+            <p class="text-xs text-slate-500">Republic of Korea</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal glass rounded-2xl p-8 text-left">
+        <p class="text-sm font-semibold text-slate-300 mb-1">Imagoworks, Inc.</p>
+        <p class="text-xs text-slate-500">1F, 636 Gangnam-daero, Gangnam-gu, Seoul 06034, Republic of Korea</p>
+        <div class="mt-4 flex flex-wrap gap-4 text-xs text-slate-500">
+          <span>📞 Office: +82-2-6925-2093</span>
+          <span>📱 Mobile: +82-10-5234-5378</span>
+          <span>✉️ kevin@imagoworks.ai</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer class="border-t border-slate-800 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+      <p>© 2024 Youngjun Kim, Ph.D. All rights reserved.</p>
+      <p class="font-mono">Imagoworks, Inc. · KIST · UST</p>
+    </div>
+  </footer>
+
+  <!-- ════════════════════ JS ════════════════════ -->
+  <script>
+    // ── Navbar scroll effect ──────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        navbar.style.background = 'rgba(15,23,42,0.92)';
+        navbar.style.backdropFilter = 'blur(16px)';
+        navbar.style.borderBottom = '1px solid rgba(148,163,184,0.08)';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.borderBottom = 'none';
+      }
+    });
+
+    // ── Hamburger ────────────────────────────────────────────────
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a =>
+      a.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'))
+    );
+
+    // ── Scroll reveal ─────────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left').forEach(el => observer.observe(el));
+
+    // ── Awards Data ───────────────────────────────────────────────
+    const awards = [
+      { year: '2023', text: 'Presidential Commendation, Republic of Korea' },
+      { year: '2022', text: "Minister's Commendation — Contribution to development of AI industry, Ministry of Science and ICT" },
+      { year: '2022', text: 'Excellent Technology Award, Society for Computational Design and Engineering' },
+      { year: '2020', text: 'K-startup Pitching Competition, Ministry of SMEs and Startups (Prize: US $50K)' },
+      { year: '2019', text: 'Winner, Seoul Innovation QuickFire Challenge: Smart Healthcare (J&J) — 2 winners among 54 worldwide, Prize: ~US $75K + 1yr Seoul Biohub residency' },
+      { year: '2019', text: 'Best Presentation Award — "Web-based deep learning platform for automated 3D modeling of mandible", CDE 2019' },
+      { year: '2018', text: "Minister's Commendation, Ministry of Science and ICT" },
+      { year: '2018', text: 'Korea Top 100 Excellent Research and Technology Achievement Award, Ministry of Science and ICT' },
+      { year: '2018', text: 'Best Presentation Award — "Rotator cuff tear 3D visualization using deep learning", KSIIM' },
+      { year: '2018', text: 'Excellent Researcher Award, National Research Council of Science and Technology' },
+      { year: '2017', text: 'KIST Best Researcher of the Month' },
+      { year: '2017', text: 'Academic Excellence Award, 30th Korean Orthopaedic Society for Sports Medicine' },
+      { year: '2017', text: 'Best Poster Award — "Web-based cooperation system for 3D surgical planning", CDE Summer Conference' },
+      { year: '2017', text: 'Best Paper Award — "Deep reinforcement learning for calibration of 2D-3D registration", ACDDE 2017' },
+      { year: '2017', text: 'Excellent Research Team Award (Medical IT Team), Awarded by President of KIST' },
+      { year: '2016', text: 'Grand Prize — "3D surgical planning software for maxillofacial reconstruction", 17th CDE Software Contest (Minister of Science, ICT)' },
+      { year: '2015', text: 'Best Paper Award — "Optimal placement of medical robotic system using genetic algorithms", 1st Int\'l Joint Conference on Convergence' },
+      { year: '2013', text: 'Young Scientist Award, 2013 Annual Conference of Society of CAD/CAM Engineers' },
+      { year: '2012', text: 'Best Paper Award — "Development of cholecystectomy simulation for laparoscopic surgery training"' },
+      { year: '2006', text: 'Encouragement Prize, 18th Software Contest of Korea, Ministry of Communication and Information' },
+      { year: '2002', text: 'Grand Prize, 5th CAD/CAM Software Contest of Korea, Ministry of Communication and Information' },
+      { year: '1998', text: 'Seoul National University Academic Scholarship (1998–2000)' },
+    ];
+
+    const awardsContainer = document.getElementById('awards-list');
+    const INITIAL_SHOW = 6;
+    let showAll = false;
+
+    function renderAwards() {
+      awardsContainer.innerHTML = '';
+      const list = showAll ? awards : awards.slice(0, INITIAL_SHOW);
+      list.forEach((a, i) => {
+        const div = document.createElement('div');
+        div.className = 'flex items-start gap-4 py-2 border-b border-slate-800/60';
+        div.innerHTML = `
+          <span class="text-xs font-mono text-yellow-500 w-10 flex-shrink-0 pt-0.5">${a.year}</span>
+          <p class="text-sm text-slate-300 leading-relaxed">${a.text}</p>`;
+        awardsContainer.appendChild(div);
+      });
+    }
+    renderAwards();
+
+    document.getElementById('toggle-awards').addEventListener('click', () => {
+      showAll = !showAll;
+      renderAwards();
+      document.getElementById('toggle-awards-text').textContent = showAll ? 'Show fewer' : 'Show all awards';
+      document.getElementById('toggle-awards-icon').style.transform = showAll ? 'rotate(180deg)' : 'rotate(0)';
+    });
+
+    // ── Publications Data ─────────────────────────────────────────
+    const journals = [
+      { year: '2024', authors: 'Joon Young Lee, ... <strong>Youngjun Kim</strong>, ...', title: 'Shallow trochlear groove and narrow medial trochlear width at the proximal trochlea in patients with trochlear dysplasia: A three-dimensional CT analysis', journal: 'Vol. 32, No. 6, pp. 1434-1445' },
+      { year: '2023', authors: 'Seulgi Lee, ..., <strong>Youngjun Kim</strong>, ...', title: 'Effect of high-speed sintering on the marginal and internal fit of CAD/CAM-fabricated monolithic zirconia crowns', journal: '<em>Scientific Reports</em>, Vol. 13, No. 17215' },
+      { year: '2022', authors: 'Seong-Hun Yoo, ..., <strong>Youngjun Kim</strong>, ...', title: 'Accuracy of 3-dimensional printed bracket transfer tray using an in-office indirect bonding system', journal: '<em>American Journal of Orthodontics & Dentofacial Orthopedics</em>, Vol. 162, No. 1' },
+      { year: '2022', authors: 'Young-Sun Park, ..., <strong>Youngjun Kim</strong>, ...', title: 'Deep learning-based prediction of the 3D postorthodontic facial changes', journal: '<em>Journal of Dental Research</em>, Vol. 101, No. 3' },
+      { year: '2022', authors: 'Xing-Yu Piao, ..., <strong>Youngjun Kim</strong>, ...', title: 'Evaluation of difference registration methods and dental restorations on the registration during and accuracy of CBCT data and intraoral scans', journal: '<em>Clinical Oral Investigations</em>, Vol. 26' },
+      { year: '2022', authors: 'Seungbin Park, Hannah Kim, ..., <strong>Youngjun Kim</strong>, ...', title: 'Deep Learning-Based Automatic Segmentation of Mandible and Maxilla in Multi-Center CT Images', journal: '<em>Applied Sciences</em>, Vol. 12, No. 3, 1358' },
+      { year: '2021', authors: 'Seungbin Park, ..., <strong>Youngjun Kim*</strong>', title: 'Artificial Intelligence-Based Nomogram for Small-Incision Lenticule Extraction', journal: '<em>Biomedical Engineering Online</em>, Vol. 20, No. 38' },
+      { year: '2021', authors: 'Jerome Charton, Stephen Baek, <strong>Youngjun Kim</strong>', title: 'Mesh repairing using topology graphs', journal: '<em>Journal of Computational Design and Engineering</em>, Vol. 8, No. 1 — <span class="text-yellow-400">Editor\'s Choice</span>' },
+      { year: '2020', authors: '<strong>Youngjun Kim</strong>, et al. (multi-author)', title: 'Artificial Intelligence in Health Care: Current Applications and Issues', journal: '<em>Journal of Korean Medical Science</em>, Vol. 35, No. 42' },
+      { year: '2020', authors: 'Eungjune Shim, ..., <strong>Youngjun Kim*</strong>, ...', title: 'Automated rotator cuff tear classification using 3D convolutional neural network', journal: '<em>Scientific Reports</em>, Vol. 10, No. 1, pp. 1-9' },
+      { year: '2020', authors: 'Hannah Kim, ..., <strong>Youngjun Kim</strong>', title: 'Web-based fully automated cephalometric analysis', journal: '<em>Computer Methods and Programs in Biomedicine</em>, Vol. 194, 105513' },
+      { year: '2017', authors: '<strong>Youngjun Kim</strong>, Hannah Kim, Yong Oock Kim', title: 'Virtual Reality and Augmented Reality in Plastic Surgery: A Review', journal: '<em>Archives of Plastic Surgery</em>, Vol. 44, No. 3, pp. 179-187' },
+      { year: '2016', authors: '<strong>Youngjun Kim</strong>, Yong Hum Na, Lei Xing, ...', title: 'Automatic deformable surface registration for medical applications by radial basis function-based robust point-matching', journal: '<em>Computers in Biology and Medicine</em>, Vol. 77, No. 1' },
+      { year: '2014', authors: '<strong>Youngjun Kim</strong>, Ruijiang Li, Yong Hum Na, Lei Xing, Rena Lee', title: 'Accuracy of surface registration compared to conventional volumetric registration in patient positioning for head-and-neck radiotherapy', journal: '<em>Medical Physics</em>, Vol. 41, No. 12' },
+    ];
+
+    const conferences = [
+      { year: '2019', title: 'Web-based deep learning platform for automated 3D modeling of mandible', venue: 'CDE 2019, Jul. 9, 2019' },
+      { year: '2018', title: 'Development of surgical assistant navigation system using Augmented Reality glasses', venue: 'Asian Conference on Design and Digital Engineering, Okinawa, Japan' },
+      { year: '2018', title: 'Development of an augmented reality application for 3D object manipulation', venue: 'Asian Conference on Design and Digital Engineering, Okinawa, Japan' },
+      { year: '2018', title: 'Evaluation of surgical planning software for mandibular reconstruction using fibular free flap', venue: 'IJCARS 2018, Barcelona, Spain' },
+      { year: '2017', title: '3D printing for medical application (Tutorial Session)', venue: 'Int\'l Symposium on Computational Design & Engineering 2017, Ho Chi Minh' },
+      { year: '2017', title: 'Deep reinforcement learning for calibration of 2D-3D registration', venue: 'ACDDE 2017, Changsha, China' },
+      { year: '2017', title: 'Development of surgical planning software for mandibular reconstruction using fibular flap', venue: 'IJCARS 2017, Barcelona, Spain' },
+      { year: '2016', title: 'Automatic segmentation and user-friendly software techniques for virtual surgical planning of mandibular reconstruction', venue: 'IEEE EMBS, Orlando, USA' },
+      { year: '2015', title: 'Development of a surgical navigation system for anterior cruciate ligament reconstruction', venue: 'IJCARS 2015, Barcelona, Spain' },
+      { year: '2014', title: 'Is surface registration accurate enough for patient setup in head-and-neck radiation therapy?', venue: 'ASTRO\'s 56th Annual Meeting, San Francisco, USA' },
+    ];
+
+    const books = [
+      { type: 'Book', year: '2017', title: 'VTK 프로그래밍 (VTK Programming)', details: '<strong>Youngjun Kim</strong>, Hyunchul Cho, Jin hyeok Choi — 일진사 (Iljinsa co.), ISBN 978-89-429-1525-5' },
+      { type: 'White Paper', year: '2023', title: 'Artificial Intelligence for Dentistry', details: 'Falk Schwendicke, ..., <strong>Youngjun Kim</strong> — FDI Artificial Intelligence Working Group' },
+      { type: 'White Paper', year: '2020', title: 'Artificial Intelligence in Health Care: Current Applications and Issues', details: 'Korean Society of Artificial Intelligence in Medicine, ISBN 979-11-6003-205-5' },
+    ];
+
+    const PUB_PAGE = 8;
+    let journalShown = PUB_PAGE;
+
+    function renderPubCard(item, idx) {
+      const div = document.createElement('div');
+      div.className = 'pub-card glass rounded-xl p-5 cursor-default';
+      div.innerHTML = `
+        <div class="flex items-start gap-3">
+          <span class="text-xs font-mono text-accent mt-0.5 w-10 flex-shrink-0">${item.year}</span>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-white leading-snug">${item.title}</p>
+            <p class="text-xs text-slate-500 mt-1">${item.authors || item.details || ''}</p>
+            ${item.journal ? `<p class="text-xs text-accent2 mt-1">${item.journal}</p>` : ''}
+            ${item.venue ? `<p class="text-xs text-accent2 mt-1">${item.venue}</p>` : ''}
+            ${item.type ? `<span class="inline-block mt-2 px-2 py-0.5 rounded text-xs font-medium" style="background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.2);color:#a5b4fc;">${item.type}</span>` : ''}
+          </div>
+          <span class="text-slate-700 text-xs flex-shrink-0">[${idx + 1}]</span>
+        </div>`;
+      return div;
+    }
+
+    function renderJournals(n) {
+      const c = document.getElementById('tab-journal');
+      c.innerHTML = '';
+      journals.slice(0, n).forEach((p, i) => c.appendChild(renderPubCard(p, i)));
+    }
+    function renderConferences() {
+      const c = document.getElementById('tab-conference');
+      c.innerHTML = '';
+      conferences.forEach((p, i) => c.appendChild(renderPubCard(p, i)));
+    }
+    function renderBooks() {
+      const c = document.getElementById('tab-book');
+      c.innerHTML = '';
+      books.forEach((p, i) => c.appendChild(renderPubCard(p, i)));
+    }
+    renderJournals(PUB_PAGE);
+    renderConferences();
+    renderBooks();
+
+    document.getElementById('load-more-pub').addEventListener('click', function () {
+      const activeTab = document.querySelector('.tab-btn.active-tab')?.dataset.tab;
+      if (activeTab === 'journal') {
+        journalShown = Math.min(journalShown + PUB_PAGE, journals.length);
+        renderJournals(journalShown);
+        if (journalShown >= journals.length) this.style.display = 'none';
+      }
+    });
+
+    // ── Tab switching ─────────────────────────────────────────────
+    const tabStyle = {
+      active: 'background:linear-gradient(135deg,rgba(56,189,248,0.15),rgba(129,140,248,0.1));border:1px solid rgba(56,189,248,0.25);color:#e2e8f0;',
+      inactive: 'background:transparent;border:1px solid rgba(100,116,139,0.2);color:#64748b;',
+    };
+
+    function setTabs(active) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const isActive = btn.dataset.tab === active;
+        btn.setAttribute('style', isActive ? tabStyle.active : tabStyle.inactive);
+        btn.classList.toggle('active-tab', isActive);
+      });
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+      document.getElementById(`tab-${active}`).classList.remove('hidden');
+      // show/hide load-more
+      const btn = document.getElementById('load-more-pub');
+      if (active === 'journal' && journalShown < journals.length) {
+        btn.style.display = '';
+      } else {
+        btn.style.display = 'none';
+      }
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => setTabs(btn.dataset.tab));
+    });
+    setTabs('journal');
+  </script>
+</body>
+</html>
